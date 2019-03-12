@@ -20,3 +20,14 @@ rompimiento varchar(3)
 insert  into codigoParticipacion(codigo_participacion, kumite, kata, armas, rompimiento) values
 
 (0001, 'no' , 'no', 'no' , 'yes' );
+
+#ESCUELA====================================================
+
+#Escuela(nombre,disciplina, instructor_principal, pueblo)
+
+CREATE TABLE escuela(
+nombre varchar(40) NOT NULL,
+disciplina varchar(40),
+instructorPrincipal varchar(40),
+pueblo varchar(40)
+);

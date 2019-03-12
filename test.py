@@ -36,6 +36,7 @@ def users():
         userDetails = cur.fetchall()
         return render_template('users.html',userDetails=userDetails)
 
+#CODIGO PARTICIPACION===============================================
 @app.route('/codigoParticipacion')
 def codigoParticipacion():
     cur = mysql.connection.cursor()
@@ -43,6 +44,33 @@ def codigoParticipacion():
     if resultValue > 0:
         codigoDetails = cur.fetchall()
         return render_template('codigoParticipacion.html',codigoDetails=codigoDetails)
+
+#ESCUELA==============================================================
+@app.route('/crearEscuela', methods=['GET', 'POST'])
+def crearEscuela():
+
+    if request.method == 'POST':
+        #Fetch form data
+        escuelaDetails = request.form
+        nombre = escuelaDetails['nombre']
+        disciplina = escuelaDetails['disciplina']
+        instructorPrincipal = escuelaDetails['instructorPrincipal']
+        pueblo = escuelaDetails['pueblo']
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO escuela(nombre,disciplina, instructorPrincipal, pueblo) VALUES(%s, %s,%s, %s)",(nombre,disciplina, instructorPrincipal, pueblo))
+        mysql.connection.commit()
+        cur.close()
+        return redirect('/escuelas')
+    return render_template('crearEscuela.html')
+
+@app.route('/escuelas')
+def escuelas():
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM escuela")
+    if resultValue > 0:
+        escuelaDetails = cur.fetchall()
+        return render_template('escuelas.html',escuelaDetails=escuelaDetails)
 
 if __name__ == '__main__':
     app.run(debug=True)
