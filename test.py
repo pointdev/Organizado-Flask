@@ -36,5 +36,13 @@ def users():
         userDetails = cur.fetchall()
         return render_template('users.html',userDetails=userDetails)
 
+@app.route('/codigoParticipacion')
+def codigoParticipacion():
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM codigoParticipacion")
+    if resultValue > 0:
+        codigoDetails = cur.fetchall()
+        return render_template('codigoParticipacion.html',codigoDetails=codigoDetails)
+
 if __name__ == '__main__':
     app.run(debug=True)
