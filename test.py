@@ -51,12 +51,17 @@ def crearEscuela():
         disciplina = escuelaDetails['disciplina']
         instructorPrincipal = escuelaDetails['instructorPrincipal']
         pueblo = escuelaDetails['pueblo']
+        print('Here is what pueblo had')
+        print(pueblo)
 
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO escuela(nombre,disciplina, instructorPrincipal, pueblo) VALUES(%s, %s,%s, %s)",(nombre,disciplina, instructorPrincipal, pueblo))
-        mysql.connection.commit()
-        cur.close()
-        return redirect('/escuelas')
+        if (pueblo == '') or (instructorPrincipal == '') or (disciplina == '') or (nombre == ''):
+            return redirect ('/crearEscuelas')
+        else:
+            cur = mysql.connection.cursor()
+            cur.execute("INSERT INTO escuela(nombre,disciplina, instructorPrincipal, pueblo) VALUES(%s, %s,%s, %s)",(nombre,disciplina, instructorPrincipal, pueblo))
+            mysql.connection.commit()
+            cur.close()
+            return redirect('/escuelas')
     return render_template('crearEscuela.html')
 
 @app.route('/escuelas')
