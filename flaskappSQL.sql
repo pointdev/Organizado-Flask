@@ -8,11 +8,12 @@ email varchar(40)
 );
 
 CREATE TABLE codigoParticipacion(
-codigo_participacion varchar(4),
-kumite varchar(3),
-kata varchar(3),
-armas varchar(3),
-rompimiento varchar(3)
+codigo_participacion varchar(4) NOT NULL,
+kumite varchar(3) NOT NULL,
+kata varchar(3) NOT NULL,
+armas varchar(3) NOT NULL,
+rompimiento varchar(3) NOT NULL,
+  PRIMARY KEY (codigo_participacion)
 );
 
 #SELECT * FROM users;
@@ -27,7 +28,8 @@ insert  into codigoParticipacion(codigo_participacion, kumite, kata, armas, romp
 
 CREATE TABLE escuela(
 nombre varchar(40) NOT NULL,
-disciplina varchar(40),
-instructorPrincipal varchar(40),
-pueblo varchar(40)
+disciplina varchar(40) NOT NULL,
+instructorPrincipal varchar(40) NOT NULL,
+pueblo varchar(40) NOT NULL,
+  PRIMARY KEY (nombre)
 );
