@@ -31,7 +31,7 @@ Concept:
 
 ### Requirements Definition Document - Description of each operation supported by the app
 + The application will be mainly used to store information and display information. The application was created to easily obtain information from the participating students and schools, and use it to score properly at the end of the tournament.
-+The most important tables on information is Estudiante and Escuela. 
++ The most important tables on information is Estudiante and Escuela. 
 + Estudiante will store information of each competitor. It must be connected to Escuela for further analysis at the end of the tournament. Since every student can opt in and out of specific competitions, the table for Participacion was created to less inflate the table Estudiante. It is necessary to know which student is participating in what of the tournament to tally up scores once the tournament is finished. It is also important to know how many students are per school so that when the score is tallies up, can be divided by the amount of student to know the average grade per school.
 + Escuela will store information of the different schools participating in the tournament. Since we need to know how many students are per school, estudiantes will store the name of the school.
 #### Requirements inside the application:
