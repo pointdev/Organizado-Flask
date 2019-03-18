@@ -94,5 +94,5 @@ Most of the time used on how to compile hello world.
 Used Eclipse and IntelliJ, Java JDK x64 8, SBT, Play Framework ver 2.7
 //---------------------------------
 March 11 2019:
-Using the Play Framework has been very difficult, so the team has decided to switch to Flask framework with Python. Results have been satisfying. Using PLay Framework version 2.7.0 with Visual Studio Code
+Using the Play Framework has been very difficult, so the team has decided to switch to Flask framework with Python. Results have been satisfying. Using Flask Framework version 2.7.0 with Visual Studio Code
 //---------------------------------
