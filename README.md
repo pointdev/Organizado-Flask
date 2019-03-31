@@ -95,4 +95,4 @@ Used Eclipse and IntelliJ, Java JDK x64 8, SBT, Play Framework ver 2.7
 //---------------------------------
 March 11 2019:
 Using the Play Framework has been very difficult, so the team has decided to switch to Flask framework with Python. Results have been satisfying. Using Flask Framework version 1.0.2 with Visual Studio Code
-//---------------------------------
+//--------------------------------- 
