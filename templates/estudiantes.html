@@ -1,0 +1,21 @@
+
+<title>Lista de Participantes</title>
+<table border = 1>
+    {% for estudiante in estudianteDetails %}
+    <tr>
+        <td> {{estudiante[0]}} </td>
+        <td> {{estudiante[1]}} </td>
+        <td> {{estudiante[2]}} </td>
+        <td> {{estudiante[3]}} </td>
+        <td> {{estudiante[4]}} </td>
+        <td> {{estudiante[5]}} </td>
+        <td> {{estudiante[6]}} </td>
+        <td> {{estudiante[7]}} </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<form action="http://127.0.0.1:5000/crearEstudiante">
+    <input type="submit" value="Registrar otro estudiante" />
+</form>

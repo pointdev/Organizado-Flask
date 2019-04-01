@@ -15,7 +15,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def index():
-    return redirect('/crearEscuela')
+    return redirect('/home')
 
 #@app.route('/', methods=['GET', 'POST'])
 #def index():
@@ -74,6 +74,41 @@ def escuelas():
 
 
 
+#ESTUDIANTE ==================================================================
+@app.route('/crearEstudiante', methods=['GET', 'POST'])
+def crearEstudiante():
+
+    if request.method == 'POST':
+        #Fetch form data
+        estudianteDetails = request.form
+        nombre = estudianteDetails['nombre']
+        apellido1 = estudianteDetails['apellido1']
+        apellido2 = estudianteDetails['apellido2']
+        cinta = estudianteDetails['cinta']
+        edad = estudianteDetails['edad']
+        escuela = estudianteDetails['escuela']
+        codigoParticipacion = estudianteDetails['codigoParticipacion']
+
+        if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
+            return redirect ('/crearEstudiante')
+        else:
+            cur = mysql.connection.cursor()
+            cur.execute("INSERT INTO estudiante(nombre, apellido1, apellido2, cinta, edad, escuela, codigoParticipacion) VALUES(%s, %s, %s, %s, %s, %s, %s)",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion))
+            mysql.connection.commit()
+            cur.close()
+            return redirect('/estudiantes')
+    return render_template('crearEstudiante.html')
+
+@app.route('/estudiantes')
+def estudiantes():
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM estudiante")
+    if resultValue > 0:
+        estudianteDetails = cur.fetchall()
+        return render_template('estudiantes.html',estudianteDetails=estudianteDetails)
+
+
+
 #CODIGO PARTICIPACION===============================================
 @app.route('/codigoParticipacion')
 def codigoParticipacion():
@@ -83,8 +118,16 @@ def codigoParticipacion():
         codigoDetails = cur.fetchall()
         return render_template('codigoParticipacion.html',codigoDetails=codigoDetails)
 
+#======================================================
+@app.route('/about')
+def about():
+        return render_template('about.html')
 
 
+@app.route('/home')
+def home():
+        return render_template('home.html')
 
+#=============================================================================
 if __name__ == '__main__':
     app.run(debug=True)

@@ -65,7 +65,7 @@ May not be operational
 
 Sprint 2
 
-* [x] Modelo diagrama a tabla
+* [x] Model diagram to table
 * [x] Mockup webpage/ creation interface
 * [x]  Participacion table has been finished with participation_codes created
 * [x]  Generic registration form for Escuela slightly Operational
@@ -74,9 +74,15 @@ Sprint 2
 
 Sprint 3
 * [ ] Activar servidor/tener applicacion en algun servidor
-* [ ] Create estudiante table
+* [x] Create estudiante table
 * [ ] Start developing a pleasant interface
-* [ ] Generic registration form for Estudiante slightly Operational
+* [x] Generic registration form for Estudiante slightly Operational
+#### Comments
++ codigo participaton table finished
++ toolbar ovverlay designed, but not implemented in all webpaged
++ Logo fot page created
++ home, about
++ registrations form for estudiantes and escuela operational
 
 Sprint 4
 * [ ]  Participation table connected to Estudiante Table
