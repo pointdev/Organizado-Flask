@@ -15,7 +15,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def index():
-    return redirect('/crearEscuela')
+    return redirect('/home')
 
 #@app.route('/', methods=['GET', 'POST'])
 #def index():
@@ -118,8 +118,16 @@ def codigoParticipacion():
         codigoDetails = cur.fetchall()
         return render_template('codigoParticipacion.html',codigoDetails=codigoDetails)
 
+#======================================================
+@app.route('/about')
+def about():
+        return render_template('about.html')
 
 
+@app.route('/home')
+def home():
+        return render_template('home.html')
 
+#=============================================================================
 if __name__ == '__main__':
     app.run(debug=True)
