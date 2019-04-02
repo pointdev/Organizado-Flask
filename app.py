@@ -51,8 +51,6 @@ def crearEscuela():
         disciplina = escuelaDetails['disciplina']
         instructorPrincipal = escuelaDetails['instructorPrincipal']
         pueblo = escuelaDetails['pueblo']
-        print('Here is what pueblo had')
-        print(pueblo)
 
         if (pueblo == '') or (instructorPrincipal == '') or (disciplina == '') or (nombre == ''):
             return redirect ('/crearEscuelas')
