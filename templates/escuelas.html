@@ -1,0 +1,17 @@
+
+<title>Lista de Participantes</title>
+<table border = 1>
+    {% for escuela in escuelaDetails %}
+    <tr>
+        <td> {{escuela[0]}} </td>
+        <td> {{escuela[1]}} </td>
+        <td> {{escuela[2]}} </td>
+        <td> {{escuela[3]}} </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<form action="http://127.0.0.1:5000/crearEscuela">
+    <input type="submit" value="Registrar otra escuela" />
+</form>
