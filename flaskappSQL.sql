@@ -1,6 +1,7 @@
-#CREATE DATABASE flaskapp;
+CREATE DATABASE flaskapp;
 
 USE flaskapp;
+USE s80s1c8qqx6rqp2o;
 #Estudiante(numero, nombre, apellido1, apellido2, cinta, edad, escuela, codigo_participacion)
 CREATE TABLE estudiante(
 ID int auto_increment NOT NULL ,
@@ -43,7 +44,7 @@ insert  into codigoParticipacion(codigo_participacion, kumite, kata, armas, romp
 (21111, 'yes' , 'yes', 'yes' , 'yes' )
 ;
 
-
+SELECT DATABASE();
 
 
 #ESCUELA====================================================
