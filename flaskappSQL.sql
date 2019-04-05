@@ -26,6 +26,8 @@ rompimiento varchar(3) NOT NULL,
   PRIMARY KEY (codigo_participacion)
 );
 
+
+
 insert  into codigoParticipacion(codigo_participacion, kumite, kata, armas, rompimiento) values
 (20001, 'no' , 'no', 'no' , 'yes' ),
 (20010, 'no' , 'no', 'yes' , 'no' ),
@@ -49,6 +51,11 @@ SELECT DATABASE();
 
 #ESCUELA====================================================
 
+INSERT INTO escuela(nombre, disciplina, instructorPrincipal, pueblo) VALUES
+('Escuela', 'karate', 'Luis Sierra', 'Toa Baja');
+
+SELECT * FROM escuela;
+
 #Escuela(nombre,disciplina, instructor_principal, pueblo)
 CREATE TABLE escuela(
 nombre varchar(40) NOT NULL,
@@ -57,3 +64,4 @@ instructorPrincipal varchar(40) NOT NULL,
 pueblo varchar(40) NOT NULL,
   PRIMARY KEY (nombre)
 );
+
