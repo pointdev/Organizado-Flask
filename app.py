@@ -1,14 +1,8 @@
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
-#from flask_heroku import Heroku
-#heroku = Heroku(app)
 
-#import yaml
 
 app = Flask(__name__)
-
-#configure db
-#db = yaml.load(open('db.yaml'))
 app.config['MYSQL_HOST'] = 'fnx6frzmhxw45qcb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'
 app.config['MYSQL_USER'] = 'ophmvxggd70qi4hx'
 app.config['MYSQL_PASSWORD'] = 'lxv5byb85vydqsnu'
