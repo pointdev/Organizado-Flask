@@ -1,4 +1,5 @@
-
+{% extends "logolayout.html" %}
+{% block content %}
 <title>Lista de Participantes</title>
 <table border = 1>
     {% for estudiante in estudianteDetails %}
@@ -19,3 +20,4 @@
 <form action="http://127.0.0.1:5000/crearEstudiante">
     <input type="submit" value="Registrar otro estudiante" />
 </form>
+{% endblock %}
