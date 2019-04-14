@@ -1,10 +1,11 @@
 <html>
     <head>
-        <title></title>
+        <title>Flask app</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     </head>
 
     <a href="http://127.0.0.1:5000/home">
-        <img src="https://imgur.com/aZHqZNJ" alt="Kenpo Logo" style="width:50px;height:60px;">
+        <img src=/static/images/kenpologo.png alt="Kenpo Logo" style="width:100px;height:100px;">
     </a>
     <div class="topnav">
         <a class="active" href="http://127.0.0.1:5000/home">Home</a>
@@ -19,7 +20,7 @@
     <div class="container">
             <style>
                     body{
-                    background-color: #e5eb93;  
+                    background-color: #f3f5de;  
                     }body
                 </style>
         {% block content %}
