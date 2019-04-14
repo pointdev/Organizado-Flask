@@ -1,4 +1,8 @@
 
+{% extends "logolayout.html" %}
+{% block content %}
+
+
 <title>Lista de Participantes</title>
 <table border = 1>
     {% for escuela in escuelaDetails %}
@@ -19,3 +23,4 @@
 <form action="https://organizador-torneos-flask.herokuapp.com/home">
     <input type="submit" value="Regresar a home" />
 </form>
+{% endblock %}
