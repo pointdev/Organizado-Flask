@@ -72,7 +72,7 @@ def escuelas():
 @app.route('/queryDeleteAllEstudiante')
 def eliminarTodosEstudiantes():
         cur = mysql.connection.cursor()
-        cur.execute("DELETE FROM estudiante")
+        cur.execute("DELETE * FROM estudiante")
         cur.close()
         return redirect('/home')
 
