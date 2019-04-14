@@ -1,6 +1,7 @@
-#CREATE DATABASE flaskapp;
+CREATE DATABASE flaskapp;
 
 USE flaskapp;
+USE s80s1c8qqx6rqp2o;
 #Estudiante(numero, nombre, apellido1, apellido2, cinta, edad, escuela, codigo_participacion)
 CREATE TABLE estudiante(
 ID int auto_increment NOT NULL ,
@@ -25,6 +26,8 @@ rompimiento varchar(3) NOT NULL,
   PRIMARY KEY (codigo_participacion)
 );
 
+
+
 insert  into codigoParticipacion(codigo_participacion, kumite, kata, armas, rompimiento) values
 (20001, 'no' , 'no', 'no' , 'yes' ),
 (20010, 'no' , 'no', 'yes' , 'no' ),
@@ -43,10 +46,15 @@ insert  into codigoParticipacion(codigo_participacion, kumite, kata, armas, romp
 (21111, 'yes' , 'yes', 'yes' , 'yes' )
 ;
 
-
+SELECT DATABASE();
 
 
 #ESCUELA====================================================
+
+INSERT INTO escuela(nombre, disciplina, instructorPrincipal, pueblo) VALUES
+('Escuela', 'karate', 'Luis Sierra', 'Toa Baja');
+
+SELECT * FROM escuela;
 
 #Escuela(nombre,disciplina, instructor_principal, pueblo)
 CREATE TABLE escuela(
@@ -56,3 +64,4 @@ instructorPrincipal varchar(40) NOT NULL,
 pueblo varchar(40) NOT NULL,
   PRIMARY KEY (nombre)
 );
+
