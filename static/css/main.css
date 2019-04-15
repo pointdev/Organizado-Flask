@@ -106,7 +106,7 @@ a {
 
   a:link {
     text-decoration: none;
-    color: rgb(255, 0, 0);
+    color: rgb(255, 174, 67);
   }
   
   a:visited {
@@ -141,6 +141,10 @@ a {
       font-family: 'Times New Roman', Times, serif;
       box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 
+  }
+
+  .paragraph{
+    text-align: center;
   }
 
 /* Design for buttons */
