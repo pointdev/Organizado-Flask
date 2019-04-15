@@ -73,7 +73,8 @@ def escuelas():
 def eliminarTodosEstudiantes():
         cur = mysql.connection.cursor()
         cur.execute("DELETE FROM estudiante")
-        #cur.close()
+        mysql.connection.commit()
+        cur.close()
         return redirect('/home')
 
 
