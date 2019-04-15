@@ -17,19 +17,16 @@
     {% endfor %}
 </table>
 
+<form method="POST" action="">
+    ID de estudiante a eliminar: <input type="text" name="ID" />
 
-<form action="https://organizador-torneos-flask.herokuapp.com/crearEstudiante">
-    <button class="button">Registrar otro estudiante </button>
+<form action="https://organizador-torneos-flask.herokuapp.com/estudiantes">
+    <button class="button">Cancelar eliminacion </button>
  </form>
 
- <form action="https://organizador-torneos-flask.herokuapp.com/DeleteEstudiante">
-    <button class="button">Eliminar un estudiante </button>
+ <form action="https://organizador-torneos-flask.herokuapp.com/queryDeleteIDestudiante">
+    <button class="button">Eliminar estudiante </button>
  </form>
-
- <form action="https://organizador-torneos-flask.herokuapp.com/queryDeleteAllEstudiante">
-    <button class="button">Eliminar todos los estudiantes </button>
- </form>
-
 
 <form action="https://organizador-torneos-flask.herokuapp.com/home">
     <button class="button">Regresar a home </button>

@@ -45,6 +45,37 @@ def escuelas():
         escuelaDetails = cur.fetchall()
         return render_template('escuelas.html',escuelaDetails=escuelaDetails)
 
+#DELETES--------------------------------------------------------------------------------------
+
+@app.route('/DeleteEstudiante', methods=['GET', 'POST'])
+def deleteEstudiante():
+        cur = mysql.connection.cursor()
+        resultValue = cur.execute("SELECT * FROM estudiante")
+        estudianteDetails = cur.fetchall()
+        
+
+        if request.method == 'POST':
+                #Fetch form data
+                idselected
+                estuID = request.form
+                idselected = estuID['ID']
+
+                if (idselected == ''):
+                return redirect ('/estudiantes')
+                else:
+                cur = mysql.connection.cursor()
+                cur.execute("INSERT INTO estudiante(nombre, apellido1, apellido2, cinta, edad, escuela, codigoParticipacion) VALUES(%s, %s, %s, %s, %s, %s, %s)",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion))
+                cur.execute("DELETE FROM estudiante WHERE (nombre, apellido1, apellido2, cinta, edad, escuela, codigoParticipacion) VALUES(%s, %s, %s, %s, %s, %s, %s)",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion))
+                #write the delete query correctly, check estudiante delete html
+                mysql.connection.commit()
+                cur.close()
+                return redirect('/estudiantes')
+        return render_template('estudianteDelete.html',estudianteDetails=estudianteDetails)
+
+
+
+
+
 
 @app.route('/queryDeleteAllEscuela')
 def eliminarTodasEscuelas():
