@@ -1,21 +1,33 @@
 
+{% extends "logolayout.html" %}
+{% block content %}
+
+
 <title>Lista de Participantes</title>
+<h1>Lista de escuelas participando</h1>
 <table border = 1>
     {% for escuela in escuelaDetails %}
-    <tr>
-        <td> {{escuela[0]}} </td>
-        <td> {{escuela[1]}} </td>
-        <td> {{escuela[2]}} </td>
-        <td> {{escuela[3]}} </td>
-    </tr>
+        <tr>
+            <td> {{escuela[0]}} </td>
+            <td> {{escuela[1]}} </td>
+            <td> {{escuela[2]}} </td>
+            <td> {{escuela[3]}} </td>
+        </tr>
     {% endfor %}
 </table>
 
 
 <form action="https://organizador-torneos-flask.herokuapp.com/crearEscuela">
-    <input type="submit" value="Registrar otra escuela" />
+    <button class="button">Registrar otra escuela </button>
+</form>
+
+<form action="https://organizador-torneos-flask.herokuapp.com/queryDeleteAllEscuela">
+    <button class="button">Eliminar todas las escuelas</button>
 </form>
 
 <form action="https://organizador-torneos-flask.herokuapp.com/home">
-    <input type="submit" value="Regresar a home" />
+    <button class="button">Regresar a home </button>
 </form>
+
+{% endblock %}
+
