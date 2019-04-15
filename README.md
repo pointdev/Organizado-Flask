@@ -99,6 +99,8 @@ Sprint 5
 * [ ] creatng default Error 404
 
 ## Notes
+URL for heroku app:
+https://organizador-torneos-flask.herokuapp.com/home
 
 Folders Containing Documentation:
 https://drive.google.com/open?id=1YdCnQzFtT31UswCvwbg2D5RJDb6oEL16
