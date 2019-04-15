@@ -3,21 +3,21 @@
 <title>Registrar participante</title>
 
 <form method="POST" action="">
-    nombre <input type="text" name="nombre" />
+    Nombre <input type="text" name="nombre" />
     <br>
-    apellido1 <input type="text" name="apellido1"/>
+    Primer apellido <input type="text" name="apellido1"/>
     <br>
-    apellido2 <input type="text" name="apellido2"/>
+    Segundo apellido <input type="text" name="apellido2"/>
     <br>
-    cinta <input type="text" name="cinta"/>
+    Cinta <input type="text" name="cinta"/>
     <br>
-    edad <input type="text" name="edad"/>
+    Edad <input type="text" name="edad"/>
     <br>
-    escuela <input type="text" name="escuela"/>
+    Escuela <input type="text" name="escuela"/>
     <br>
-    codigoParticipacion <input type="text" name="codigoParticipacion"/>
+    Codigo de participacion <input type="text" name="codigoParticipacion"/>
     <br>
-    <input type="submit"/>
+    <button class="button">Someter </button>
 </form>
 
 
@@ -75,11 +75,9 @@
 
 
 
-
-
-<form action="https://organizador-torneos-flask.herokuapp.com/home">
-    <input type="submit" value="Regresar a home" />
-</form>
+    <form action="https://organizador-torneos-flask.herokuapp.com/home">
+        <button class="button">Regresar a home </button>
+     </form>
 
 {% endblock %}
 
