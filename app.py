@@ -68,6 +68,24 @@ def escuelas():
         return render_template('escuelas.html',escuelaDetails=escuelaDetails)
 
 
+@app.route('/queryDeleteAllEscuela')
+def eliminarTodasEscuelas():
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM escuela")
+        mysql.connection.commit()
+        cur.close()
+        return redirect('/home')
+
+
+
+@app.route('/queryDeleteAllEstudiante')
+def eliminarTodosEstudiantes():
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM estudiante")
+        mysql.connection.commit()
+        cur.close()
+        return redirect('/home')
+
 
 #ESTUDIANTE ==================================================================
 @app.route('/crearEstudiante', methods=['GET', 'POST'])

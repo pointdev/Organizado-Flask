@@ -1,5 +1,7 @@
-
+{% extends "logolayout.html" %}
+{% block content %}
 <title>Lista de Participantes</title>
+<h1>Lista de participantes</h1>
 <table border = 1>
     {% for estudiante in estudianteDetails %}
     <tr>
@@ -17,9 +19,18 @@
 
 
 <form action="https://organizador-torneos-flask.herokuapp.com/crearEstudiante">
-    <input type="submit" value="Registrar otro estudiante" />
-</form>
+    <button class="button">Registrar otro estudiante </button>
+ </form>
+
+ <form action="https://organizador-torneos-flask.herokuapp.com/queryDeleteAllEstudiante">
+    <button class="button">Eliminar todos los estudiantes </button>
+ </form>
+
 
 <form action="https://organizador-torneos-flask.herokuapp.com/home">
-    <input type="submit" value="Regresar a home" />
+    <button class="button">Regresar a home </button>
 </form>
+
+{% endblock %}
+
+
