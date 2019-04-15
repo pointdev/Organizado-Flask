@@ -5,20 +5,36 @@
    <head>
       <title>HOME</title>
    </head>
-   <form action="https://organizador-torneos-flask.herokuapp.com/crearEscuela">
-      <input type="submit" value="Registrar escuela" />
-  </form>
 
+   <div class="titleTNR"><p>Home</p></div>
+
+   <body>
+      &nbsp; Bienvenidos a la Pagina "Organizador de Torneos de Karate". <br>
+         En barra de herramientas encontrara todas la opcionesque puede encontrar para poder organizar su torneo eficazmente. <br>
+         Por ahora, este organizador acepta 4 entradas en los torneos: Kumite, Kata, Armas, Rompimiento. En el futuro se puede aceptar as entradas. <br>
+         Si quieren saber mas de los creadores de la pagina, favor revisar el "about" al final de la barra de herramientas.
+      
+      
+   </body>
+
+
+
+  
+   <form action="https://organizador-torneos-flask.herokuapp.com/crearEscuela"> 
+      <button class="button">Crear Escuela </button>
+   </form>
+  
    <form action="https://organizador-torneos-flask.herokuapp.com/crearEstudiante">
-      <input type="submit" value="Registrar estudiante" />
-  </form>
+      <button class="button">Registrar estudiante </button>
+   </form>
 
-  <form action="https://organizador-torneos-flask.herokuapp.com/escuelas">
-   <input type="submit" value="Ver escuelas registradas" />
-</form>
-<form action="https://organizador-torneos-flask.herokuapp.com/estudiantes">
-   <input type="submit" value="Ver estudiantes registrados" />
-</form>
+   <form action="https://organizador-torneos-flask.herokuapp.com/escuelas">
+      <button class="button">Ver escuelas registradas </button>
+   </form>
+
+   <form action="https://organizador-torneos-flask.herokuapp.com/estudiantes">
+      <button class="button">Ver estudiantes registrados </button>
+   </form>
 
 
 </html>
