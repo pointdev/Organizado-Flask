@@ -37,13 +37,13 @@ def crearEscuela():
             return redirect('/escuelas')
     return render_template('crearEscuela.html')
 
-@app.route('/escuelas')
+@app.route('/escuelas',  methods=['GET', 'POST'])
 def escuelas():
-    cur = mysql.connection.cursor()
-    resultValue = cur.execute("SELECT * FROM escuela")
-    if resultValue > 0:
-        escuelaDetails = cur.fetchall()
-        return render_template('escuelas.html',escuelaDetails=escuelaDetails)
+        cur = mysql.connection.cursor()
+        resultValue = cur.execute("SELECT * FROM escuela")
+        if resultValue > 0:
+                escuelaDetails = cur.fetchall()
+                return render_template('escuelas.html',escuelaDetails=escuelaDetails)
 
 
 @app.route('/queryDeleteAllEscuela')
