@@ -73,9 +73,9 @@ Sprint 2
 + Participation table has been created, but not all participation_codes have been implemented
 
 Sprint 3
-* [ ] Activar servidor/tener applicacion en algun servidor
+* [x] Activar servidor/tener applicacion en algun servidor
 * [x] Create estudiante table
-* [ ] Start developing a pleasant interface
+* [-] Start developing a pleasant interface
 * [x] Generic registration form for Estudiante slightly Operational
 #### Comments
 + codigo participaton table finished
@@ -86,9 +86,21 @@ Sprint 3
 
 Sprint 4
 * [ ]  Participation table connected to Estudiante Table
-* [ ] Improve interface
+* [x] Improve interface
+* [x] toolbar implemented
+* [X] Heroku now works perfectly with database
+* [X] Delete tables Escuela and Estudiante
+* [x] Added Home and About page information
+
+Sprint 5
+* [ ] Improve interfac
+* [ ] Debugging
+* [ ] Error catching
+* [ ] creatng default Error 404
 
 ## Notes
+URL for heroku app:
+https://organizador-torneos-flask.herokuapp.com/home
 
 Folders Containing Documentation:
 https://drive.google.com/open?id=1YdCnQzFtT31UswCvwbg2D5RJDb6oEL16
