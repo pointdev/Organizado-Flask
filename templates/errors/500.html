@@ -1,0 +1,7 @@
+{% extends "logolayout.html" %}
+{% block content %}
+  <title>Internal Server Error</title>
+  <h1>Internal Server Error</h1>
+  <p>Oops! Error en el servidor. Probablemente aparezco por no tener nada en la tabla.
+  <p><a href="{{ url_for('index') }}">Mejor regrese.</a>
+{% endblock %}

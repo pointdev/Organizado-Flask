@@ -6,12 +6,27 @@
 <title>Lista de Participantes</title>
 <h1>Lista de escuelas participando</h1>
 <table border = 1>
+        <tr>
+            <td>Nombre Escuela</td>
+            <td>Disciplina</td>
+            <td>Nombre del Instructor Principal</td>
+            <td>Pueblo</td>
+            <td>Editar</td>
+           <td>Eliminar</td>
+        </tr>
+
     {% for escuela in escuelaDetails %}
         <tr>
             <td> {{escuela[0]}} </td>
             <td> {{escuela[1]}} </td>
             <td> {{escuela[2]}} </td>
             <td> {{escuela[3]}} </td>
+            <td><form action="">
+                <button class="button">Editar </button>
+            </form></td>
+            <td><form action="">
+                <button class="button">Eliminar </button>
+            </form></td>
         </tr>
     {% endfor %}
 </table>
