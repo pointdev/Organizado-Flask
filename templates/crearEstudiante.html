@@ -116,14 +116,14 @@ Codigo de participacion  <input list= "hosting-plan" type="text" name="codigoPar
 
 
 
-<select name = "codigoParticipacion3">
+<select name = "codigoParticipacion">
   <?php 
   $conn = new mysqli('fnx6frzmhxw45qcb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'ophmvxggd70qi4hx', 'lxv5byb85vydqsnu', 's80s1c8qqx6rqp2o') 
 
-    $sql = mysqli_query($connection, "SELECT codigo_participacion FROM codigoParticipacion");
+    $sql = mysqli_query($connection, "SELECT codigo_participacion FROM codigoParticipacion") or die(mysql_error());  
     while ($rows = $sql->fetch_assoc())
     {
-      <option value="owner1"><?php echo $row['codigo_participacion']; ?> Codigo PArticipacion 3</option>
+      <option value="codigoParticipacion1"><?php echo $row['codigo_participacion']; ?> Codigo PArticipacion 3</option>
     }
   ?>
 </select>
