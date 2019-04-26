@@ -124,6 +124,9 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 # RENDER ERROR PAGES =========================================================
+
+app.config['TRAP_HTTP_EXCEPTIONS']=True
+
 @app.errorhandler(404)
 def page_not_found(e):
         # note that we set the 404 status explicitly
