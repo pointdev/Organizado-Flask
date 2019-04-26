@@ -1,4 +1,4 @@
-body {
+  body {
     margin: 0;
     padding: 0;
     font-family: 'Times New Roman', Times, serif;
@@ -15,6 +15,7 @@ body {
     opacity: .9;
     margin-bottom: 10px;
   }
+
   header h1.logo {
     margin: 0;
     font-size: 1.7em;
@@ -97,6 +98,19 @@ body {
     border: 1px solid green;
   }
 
+
+/* Table */
+  table, th, td{
+    border: 1px solid black;
+  }
+  tr:hover {background-color: #f5f5f5;}
+  tr:nth-child(even) {background-color: #f2f2f2;}
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+
 /* Used for viewing links */
 a {
   color: rgb(255, 209, 149);
@@ -135,6 +149,8 @@ a {
     font-family: 'Times New Roman', Times, serif;
   }
 
+
+
   a:toolbar:hover{
       background-color: rgb(255, 255, 255); 
       color: rgb(80, 53, 0);
@@ -146,6 +162,28 @@ a {
   .paragraph{
     text-align: center;
   }
+
+  /* reference links 2 */
+    .a2 {
+      color: rgb(0, 26, 255);
+      padding: 10px;
+    }
+    .a2:link {
+      text-decoration: none;
+      color: rgb(133, 67, 255);
+    }
+    
+    .a2:visited {
+      text-decoration: none;
+    }
+    
+    .a2:hover {
+      text-decoration: underline;
+    }
+    
+    .a2:active {
+      text-decoration: underline;
+    }
 
 /* Design for buttons */
   .button {
