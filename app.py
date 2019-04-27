@@ -64,14 +64,6 @@ def deleteEscuela(id):
         cur.close()
         return redirect ('/escuelas')
 
-@app.route('/queryDeleteEstudiante/<string:id>', methods=['POST'])
-def deleteEstudiante(id):
-        cur = mysql.connection.cursor()
-        cur.execute("DELETE FROM estudiante WHERE id = %s", [id])
-        mysql.connection.commit()
-        cur.close()
-        return redirect ('/estudiantes')
-
 
 @app.route('/queryDeleteAllEstudiante')
 def eliminarTodosEstudiantes():
@@ -109,6 +101,14 @@ def crearEstudiante():
 
 
 
+@app.route('/queryDeleteEstudiante/<string:id>', methods=['POST'])
+def deleteEstudiante(id):
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM estudiante WHERE id = %s", [id])
+        mysql.connection.commit()
+        cur.close()
+        return redirect ('/estudiantes')
+
 
 @app.route('/editarEstudiante/<string:id>' , methods=['GET', 'POST'])
 def editarEstudiante(id):
@@ -137,7 +137,7 @@ def editarEstudiante(id):
                         mysql.connection.commit()
                         cur.close()
                         return redirect('/estudiantes')
-        return render_template('editarEstudiante/<string:id>.html')
+        return render_template('editarEstudiante.html')
 
 #
 #nom=nom,ap1=ap1, ap2=ap2, cin=cin, ed=ed,esc=esc,cod=cod
