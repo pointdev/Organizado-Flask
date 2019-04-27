@@ -130,7 +130,7 @@ def editarEstudiante(id):
              #   edad = estudianteDetails['edad']
              #   escuela = estudianteDetails['escuela']
              #   codigoParticipacion = estudianteDetails['codigoParticipacion']
-
+                entry = request.form
                 nombre = entry['nombre']
                 apellido1 = entry['apellido1']
                 apellido2 = entry['apellido2']
