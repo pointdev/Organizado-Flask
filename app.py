@@ -108,9 +108,9 @@ def crearEstudiante():
     return render_template('crearEstudiante.html')
 
 
+#/<string:id>
 
-
-@app.route('/editarEstudiante/<string:id>' , methods=['GET', 'POST'])
+@app.route('/editarEstudiante' , methods=['GET', 'POST'])
 def editarEstudiante(id):
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM estudiante WHERE id = %s", [id])
