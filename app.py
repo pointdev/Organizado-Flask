@@ -113,29 +113,7 @@ def crearEstudiante():
 @app.route('/editarEstudiante/<string:id>' , methods=['GET', 'POST'])
 def editarEstudiante(id):
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM estudiante WHERE id = %s", [id])
-
-        entry = cur.fetchone()
-       # cur.close()
-
-
-
-        print(entry[1])
-        print(entry[2])
-        print(entry[3])
-        print(entry[4])
-        print(entry[5])
-        print(entry[6])
-        print(entry[7])
-
-       # nom = entry[1]
-       # ap1 = entry[2]
-        #ap2 = entry[3]
-        #cin = entry[4]
-        #ed = entry[5]
-        #esc = entry[6]
-        #cod = entry[7]
-
+        
         if request.method == 'POST':
         #Fetch form data
                 estudianteDetails = request.form
