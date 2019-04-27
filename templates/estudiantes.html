@@ -31,7 +31,7 @@
         <td><form action="">
             <button class="button">Editar </button>
         </form></td>
-        <td><form action="">
+        <td><form action="{{url_for('deleteEstudiante', id=estudiante[0])}}" method="POST">
             <button class="button">Eliminar </button>
         </form></td>
     </tr>

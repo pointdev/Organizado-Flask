@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
 
 
@@ -54,6 +54,13 @@ def eliminarTodasEscuelas():
         cur.close()
         return redirect('/home')
 
+@app.route('/queryDeleteEstudiante/<string:id>', methods=['POST'])
+def deleteEstudiante(id):
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM estudiante WHERE id = %s", [id])
+        mysql.connection.commit()
+        cur.close()
+        return redirect ('/estudiantes')
 
 
 @app.route('/queryDeleteAllEstudiante')
