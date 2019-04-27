@@ -113,7 +113,7 @@ def crearEstudiante():
 @app.route('/editarEstudiante/<string:id>' , methods=['GET', 'POST'])
 def editarEstudiante(id):
         cur = mysql.connection.cursor()
-        result = cur.execute("SELECT * FROM estudiante WHERE id = %s", [id])
+        cur.execute("SELECT * FROM estudiante WHERE id = %s", [id])
 
         entry = cur.fetchone()
         cur.close()
