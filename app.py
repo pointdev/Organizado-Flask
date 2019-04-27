@@ -10,6 +10,7 @@ app.config['MYSQL_DB'] = 's80s1c8qqx6rqp2o'
 
 mysql = MySQL(app)
 
+
 @app.route('/')
 def index():
     return redirect('/home')
@@ -88,7 +89,6 @@ def crearEstudiante():
     if request.method == 'POST':
         #Fetch form data
         estudianteDetails = request.form
-        estudianteDetails['nombre'] = 'foo test'
         nombre = estudianteDetails['nombre']
         apellido1 = estudianteDetails['apellido1']
         apellido2 = estudianteDetails['apellido2']
@@ -122,14 +122,14 @@ def editarEstudiante(id):
 
         if request.method == 'POST':
         #Fetch form data
-                estudianteDetails = request.form
-                nombre = estudianteDetails['nombre']
-                apellido1 = estudianteDetails['apellido1']
-                apellido2 = estudianteDetails['apellido2']
-                cinta = estudianteDetails['cinta']
-                edad = estudianteDetails['edad']
-                escuela = estudianteDetails['escuela']
-                codigoParticipacion = estudianteDetails['codigoParticipacion']
+             #   estudianteDetails = request.form
+              #  nombre = estudianteDetails['nombre']
+             #   apellido1 = estudianteDetails['apellido1']
+             #   apellido2 = estudianteDetails['apellido2']
+             #   cinta = estudianteDetails['cinta']
+             #   edad = estudianteDetails['edad']
+             #   escuela = estudianteDetails['escuela']
+             #   codigoParticipacion = estudianteDetails['codigoParticipacion']
 
                 nombre = entry['nombre']
                 apellido1 = entry['apellido1']
@@ -149,7 +149,7 @@ def editarEstudiante(id):
                         mysql.connection.commit()
                         cur.close()
                         return redirect('/estudiantes')
-        return render_template('editarEstudiante.html', estudianteDetails=estudianteDetails)
+        return render_template('editarEstudiante.html', entry=entry)
 
 
 @app.route('/estudiantes')
