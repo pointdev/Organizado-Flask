@@ -106,6 +106,49 @@ def crearEstudiante():
             return redirect('/estudiantes')
     return render_template('crearEstudiante.html')
 
+
+
+
+@app.route('/editarEstudiante/<string:id>' , methods=['GET', 'POST'])
+def editarEstudiante(id):
+        cur = mysql.connection.cursor()
+        result = cur.execute("SELECT * FROM estudiante WHERE id = %s", [id])
+        entry = cur.fetchone()
+        cur.close()
+
+        estudianteDetails = request.form
+        nombre.data = entry['nombre']
+        apellido1.data = entry['apellido1']
+        apellido2.data = entry['apellido2']
+        cinta.data = entry['cinta']
+        edad.data = entry['edad']
+        escuela.data = entry['escuela']
+        codigoParticipacion.data = entry['codigoParticipacion']
+
+
+        if request.method == 'POST':
+        #Fetch form data
+        estudianteDetails = request.form
+        nombre = estudianteDetails['nombre']
+        apellido1 = estudianteDetails['apellido1']
+        apellido2 = estudianteDetails['apellido2']
+        cinta = estudianteDetails['cinta']
+        edad = estudianteDetails['edad']
+        escuela = estudianteDetails['escuela']
+        codigoParticipacion = estudianteDetails['codigoParticipacion']
+
+        if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
+            return redirect ('/crearEstudiante')
+        else:
+            cur = mysql.connection.cursor()
+            cur.execute("UPDATE estudiante SET nombre=%s, apellido1=%s, apellido2=%s, cinta=%s, edad=%s, escuela=%s, codigoParticipacion=%s WHERE id=%s",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion, id))
+           # ("INSERT INTO estudiante(nombre, apellido1, apellido2, cinta, edad, escuela, codigoParticipacion) VALUES(%s, %s, %s, %s, %s, %s, %s)",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion))
+            mysql.connection.commit()
+            cur.close()
+            return redirect('/estudiantes')
+    return render_template('editarEstudiante.html')
+
+
 @app.route('/estudiantes')
 def estudiantes():
     cur = mysql.connection.cursor()
