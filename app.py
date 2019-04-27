@@ -116,24 +116,7 @@ def editarEstudiante(id):
         entry = cur.fetchone()
         cur.close()
 
-        estudianteDetails = request.form
-        nombre = estudianteDetails['nombre']
-        apellido1 = estudianteDetails['apellido1']
-        apellido2 = estudianteDetails['apellido2']
-        cinta = estudianteDetails['cinta']
-        edad = estudianteDetails['edad']
-        escuela = estudianteDetails['escuela']
-        codigoParticipacion = estudianteDetails['codigoParticipacion']
-
-
-
-        nombre.data = entry['nombre']
-        apellido1.data = entry['apellido1']
-        apellido2.data = entry['apellido2']
-        cinta.data = entry['cinta']
-        edad.data = entry['edad']
-        escuela.data = entry['escuela']
-        codigoParticipacion.data = entry['codigoParticipacion']
+        
 
 
         if request.method == 'POST':
@@ -147,8 +130,16 @@ def editarEstudiante(id):
                 escuela = estudianteDetails['escuela']
                 codigoParticipacion = estudianteDetails['codigoParticipacion']
 
+                nombre.data = entry['nombre']
+                apellido1.data = entry['apellido1']
+                apellido2.data = entry['apellido2']
+                cinta.data = entry['cinta']
+                edad.data = entry['edad']
+                escuela.data = entry['escuela']
+                codigoParticipacion.data = entry['codigoParticipacion']
+
                 if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
-                   return redirect ('/crearEstudiante')
+                   return redirect ('/editarEstudiante')
 
                 else:
                         cur = mysql.connection.cursor()
