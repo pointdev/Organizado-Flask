@@ -70,7 +70,7 @@
 
 
 
-
+<!-- TEST1
 <div class="dropdown">
         Codigo de participacion  <input type="text" name="codigoParticipacion"/>
         {% for codigo in codigoDetails %}
@@ -81,12 +81,12 @@
         </div>
         {% endfor %}
       </div> 
-      
+       -->
 
 
 
 
-
+<!-- TEST 2
 Codigo de participacion 2 <input list= "hosting-plan" type="text" name="codigoParticipacion"/>
 {% for codigo in codigoDetails %}
 <datalist id="hosting-plan" type= "text">
@@ -97,10 +97,10 @@ Codigo de participacion 2 <input list= "hosting-plan" type="text" name="codigoPa
   </tr>
   
 </datalist>
-{% endfor %}
+{% endfor %} -->
 
 
-<!--       ORIGNAL
+<!--       TEST 2 ORIGNAL
 Codigo de participacion  <input list= "hosting-plan" type="text" name="codigoParticipacion"/>
 {% for codigo in codigoDetails %}
 <datalist id="hosting-plan" type= "text">
@@ -114,7 +114,7 @@ Codigo de participacion  <input list= "hosting-plan" type="text" name="codigoPar
 
 
 
-
+<!--  ANOTHER TEST 
 
 <select name = "codigoParticipacion">
   <?php 
@@ -126,7 +126,36 @@ Codigo de participacion  <input list= "hosting-plan" type="text" name="codigoPar
       <option value="codigoParticipacion1"><?php echo $row['codigo_participacion']; ?> Codigo PArticipacion 3</option>
     }
   ?>
-</select>
+</select> -->
+
+
+
+
+
+
+
+
+<?php
+  $hostname = "localhost";
+  $dbname = "flaskaspp";
+  $username = "root";
+  $password = "";
+
+  $conn = mysqli_connect("$hostname","$username","$password","$dbname");
+  
+  if(mysqli_connect_errno()){
+    echo "Connection Failed :".mysqli_connect_error();
+  }
+
+  $query= mysqli_query($conn, "SELECT * FROM codigoParticipacion")
+  echo "<input type= 'search' list = 'dtlist'/>";
+  echo "<datalist id = 'dtlist'>";
+    while($row = mysqli_fetch_array($query)){
+      echo "<option>$row[codigo_participacion]</option>";
+    }
+  echo "</datalist>";
+  mysqli_close($conn);
+?>
 
 
 
