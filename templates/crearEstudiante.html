@@ -161,6 +161,38 @@ Codigo de participacion  <input list= "hosting-plan" type="text" name="codigoPar
 
 
 
+      <?php
+        $hostname = "localhost";
+        $dbname = "flaskaspp";
+        $username = "root";
+        $password = "";
+    
+        
+        try{
+          $sqlconnection = new pdo ('mysql:host=localhost;dbname=flaskaspp;charset=utf8,'root',''');
+        }
+        catch(PDOException $pe){
+          echo 'Cannot connect to database'
+          die;
+        }
+      echo "<b>Connected to database </b> ";
+      ?>
+
+      <?php 
+        echo "<h1>Prohibido</h1>"
+      ?>
+
+      <!-- echo "<input type= 'search' list = 'dtlist'/>";
+      echo "<datalist id = 'dtlist'>";
+        while($row = mysqli_fetch_array($query)){
+          echo "<option>$row[codigo_participacion]</option>";
+        }
+      echo "</datalist>";
+      mysqli_close($conn); -->
+
+
+
+
     <form action="https://organizador-torneos-flask.herokuapp.com/home">
         <button class="button">Regresar a home </button>
      </form>
