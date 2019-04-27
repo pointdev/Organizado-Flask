@@ -118,13 +118,13 @@ def editarEstudiante(id):
         entry = cur.fetchall()
         cur.close()
 
-        request.form['nombre'] = entry['nombre']
-        request.form['apellido1'] = entry['apellido1']
-        request.form['apellido2'] = entry['apellido2']
-        request.form['cinta'] = entry['cinta']
-        request.form['edad'] = entry['edad']
-        request.form['escuela'] = entry['escuela']
-        request.form['codigoParticipacion'] = entry['codigoParticipacion']
+        nom = entry['nombre']
+        ap1 = entry['apellido1']
+        ap2 = entry['apellido2']
+        cin = entry['cinta']
+        ed = entry['edad']
+        esc = entry['escuela']
+        cod = entry['codigoParticipacion']
 
         if request.method == 'POST':
         #Fetch form data
@@ -149,7 +149,7 @@ def editarEstudiante(id):
                         mysql.connection.commit()
                         cur.close()
                         return redirect('/estudiantes')
-        return render_template('editarEstudiante.html', estudianteDetails=estudianteDetails, entry=entry)
+        return render_template('editarEstudiante.html', estudianteDetails=estudianteDetails, entry=entry, nom=nom,ap1=ap1, ap2=ap2, cin=cin, ed=ed,esc=esc,cod=cod)
 
 
 @app.route('/estudiantes')
