@@ -1,50 +1,5 @@
 
 
-<style>
-  .dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    overflow: auto;
-  }
-  
-  .dropdown-content a:hover {background-color: #f1f1f1;}
-  .dropdown:hover .dropdown-content {display: block;}
-  .dropdown:hover .dropbtn {background-color: #3e8e41;}
-  </style>
-
-<!-- ==================================================================== -->
-
-
-
-
-
-
 {% extends "logolayout.html" %}
 {% block content %}
 <title>Registrar participante</title>
@@ -60,9 +15,19 @@
     <br>
     Edad <input type="text" name="edad"/>
     <br>
-    Escuela <input type="text" name="escuela"/>
+      Escuela <input list="escuelas" type="text" name="escuela"/>
+      <datalist id="escuelas" type= "text">
+          {% for escuela in escuelaDetails %}
+          <option value={{escuela[0]}}></option>
+          {% endfor %}
+        </datalist>
     <br>
-    Codigo de participacion <input type="text" name="codigoParticipacion"/>
+      Codigo de participacion  <input list= "codigos" type="text" name="codigoParticipacion"/>
+      <datalist id="codigos" type= "text">
+        {% for codigo in codigoDetails %}
+        <option value={{codigo[0]}}></option>
+         {% endfor %}
+      </datalist>
     <br>
     <button class="button">Someter </button>
 </form>
@@ -70,127 +35,7 @@
 
 
 
-<!-- TEST1
-<div class="dropdown">
-        Codigo de participacion  <input type="text" name="codigoParticipacion"/>
-        {% for codigo in codigoDetails %}
-        <div class="dropdown-content">
-          <tr>
-            <td> {{codigo[0]}} </td>
-          </tr>
-        </div>
-        {% endfor %}
-      </div> 
-       -->
-
-
-
-
-<!-- TEST 2
-Codigo de participacion 2 <input list= "hosting-plan" type="text" name="codigoParticipacion"/>
-{% for codigo in codigoDetails %}
-<datalist id="hosting-plan" type= "text">
-  <tr>
-    <td>
-      <option value="{{codigo[0]}}"/>
-    </td>
-  </tr>
-  
-</datalist>
-{% endfor %} -->
-
-
-<!--       TEST 2 ORIGNAL
-Codigo de participacion  <input list= "hosting-plan" type="text" name="codigoParticipacion"/>
-{% for codigo in codigoDetails %}
-<datalist id="hosting-plan" type= "text">
-  <option value="small"/>
-  <option value="medium"></option>
-  <option value="large"></option>
-</datalist>
-{% endfor %} -->
-
-
-
-
-
-<!--  ANOTHER TEST 
-
-<select name = "codigoParticipacion">
-  <?php 
-  $conn = new mysqli('fnx6frzmhxw45qcb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'ophmvxggd70qi4hx', 'lxv5byb85vydqsnu', 's80s1c8qqx6rqp2o') 
-
-    $sql = mysqli_query($connection, "SELECT codigo_participacion FROM codigoParticipacion") or die(mysql_error());  
-    while ($rows = $sql->fetch_assoc())
-    {
-      <option value="codigoParticipacion1"><?php echo $row['codigo_participacion']; ?> Codigo PArticipacion 3</option>
-    }
-  ?>
-</select> -->
-
-
-
-
-
-
-<!-- TEST 4
-
-<?php
-  $hostname = "localhost";
-  $dbname = "flaskaspp";
-  $username = "root";
-  $password = "";
-
-  $conn = mysqli_connect("$hostname","$username","$password","$dbname");
-  
-  if(mysqli_connect_errno()){
-    echo "Connection Failed :".mysqli_connect_error();
-  }
-
-  $query= mysqli_query($conn, "SELECT * FROM codigoParticipacion")
-  echo "<input type= 'search' list = 'dtlist'/>";
-  echo "<datalist id = 'dtlist'>";
-    while($row = mysqli_fetch_array($query)){
-      echo "<option>$row[codigo_participacion]</option>";
-    }
-  echo "</datalist>";
-  mysqli_close($conn);
-?> -->
-
-
-
-
-<!-- TEST 5
-      <?php
-        $hostname = "localhost";
-        $dbname = "flaskaspp";
-        $username = "root";
-        $password = "";
-    
-        
-        try{
-          $sqlconnection = new pdo ('mysql:host=localhost;dbname=flaskaspp;charset=utf8,'root',''');
-        }
-        catch(PDOException $pe){
-          echo 'Cannot connect to database'
-          die;
-        }
-      echo "<b>Connected to database </b> ";
-      ?>
-
-      <?php 
-        echo "<h1>Prohibido</h1>"
-      ?>
-
-       echo "<input type= 'search' list = 'dtlist'/>";
-      echo "<datalist id = 'dtlist'>";
-        while($row = mysqli_fetch_array($query)){
-          echo "<option>$row[codigo_participacion]</option>";
-        }
-      echo "</datalist>";
-      mysqli_close($conn); --> 
-
-
+     
 
 
     <form action="https://organizador-torneos-flask.herokuapp.com/home">

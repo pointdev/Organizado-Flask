@@ -69,8 +69,11 @@ def eliminarTodosEstudiantes():
 @app.route('/crearEstudiante', methods=['GET', 'POST'])
 def crearEstudiante():
     cur = mysql.connection.cursor()
+    cur2 = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * FROM codigoParticipacion")
-    if resultValue > 0:
+    resultValue2 = cur2.execute("SELECT * FROM escuela")
+    if resultValue > 0  or resultValue2 > 0:
+        escuelaDetails = cur2.fetchall()
         codigoDetails = cur.fetchall()
 
     if request.method == 'POST':
@@ -92,7 +95,7 @@ def crearEstudiante():
             mysql.connection.commit()
             cur.close()
             return redirect('/estudiantes')
-    return render_template('crearEstudiante.html', codigoDetails=codigoDetails)
+    return render_template('crearEstudiante.html', codigoDetails=codigoDetails, escuelaDetails=escuelaDetails)
 
 @app.route('/estudiantes')
 def estudiantes():
