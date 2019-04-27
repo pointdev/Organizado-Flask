@@ -118,13 +118,13 @@ def editarEstudiante(id):
         entry = cur.fetchall()
         cur.close()
 
-        nom = entry['nombre']
-        ap1 = entry['apellido1']
-        ap2 = entry['apellido2']
-        cin = entry['cinta']
-        ed = entry['edad']
-        esc = entry['escuela']
-        cod = entry['codigoParticipacion']
+        nom = entry[1]
+        ap1 = entry[2]
+        ap2 = entry[3]
+        cin = entry[4]
+        ed = entry[5]
+        esc = entry[6]
+        cod = entry[7]
 
         if request.method == 'POST':
         #Fetch form data
