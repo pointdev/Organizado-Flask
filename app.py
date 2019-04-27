@@ -149,7 +149,7 @@ def editarEstudiante(id):
                         mysql.connection.commit()
                         cur.close()
                         return redirect('/estudiantes')
-        return render_template('editarEstudiante.html', estudianteDetails=estudianteDetails)
+        return render_template('editarEstudiante.html', estudianteDetails=estudianteDetails, entry=entry)
 
 
 @app.route('/estudiantes')
