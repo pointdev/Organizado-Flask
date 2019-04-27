@@ -114,30 +114,30 @@ def crearEstudiante():
 def editarEstudiante(id):
         cur = mysql.connection.cursor()
         result = cur.execute("SELECT * FROM estudiante WHERE id = %s", [id])
+
         entry = cur.fetchall()
         cur.close()
 
-        
-
+        request.form['nombre'] = entry['nombre']
+        request.form['apellido1'] = entry['apellido1']
+        request.form['apellido2'] = entry['apellido2']
+        request.form['cinta'] = entry['cinta']
+        request.form['edad'] = entry['edad']
+        request.form['escuela'] = entry['escuela']
+        request.form['codigoParticipacion'] = entry['codigoParticipacion']
 
         if request.method == 'POST':
         #Fetch form data
-             #   estudianteDetails = request.form
-              #  nombre = estudianteDetails['nombre']
-             #   apellido1 = estudianteDetails['apellido1']
-             #   apellido2 = estudianteDetails['apellido2']
-             #   cinta = estudianteDetails['cinta']
-             #   edad = estudianteDetails['edad']
-             #   escuela = estudianteDetails['escuela']
-             #   codigoParticipacion = estudianteDetails['codigoParticipacion']
-                entry = request.form
-                nombre = entry['nombre']
-                apellido1 = entry['apellido1']
-                apellido2 = entry['apellido2']
-                cinta = entry['cinta']
-                edad = entry['edad']
-                escuela = entry['escuela']
-                codigoParticipacion = entry['codigoParticipacion']
+                estudianteDetails = request.form
+                nombre = estudianteDetails['nombre']
+                apellido1 = estudianteDetails['apellido1']
+                apellido2 = estudianteDetails['apellido2']
+                cinta = estudianteDetails['cinta']
+                edad = estudianteDetails['edad']
+                escuela = estudianteDetails['escuela']
+                codigoParticipacion = estudianteDetails['codigoParticipacion']
+                
+                
 
                 if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
                    return redirect ('/editarEstudiante')
