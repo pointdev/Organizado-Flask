@@ -189,12 +189,17 @@ def internal_server_error(e):
 
 
 @app.errorhandler(403)
-def internal_server_error(e):
+def prohibited(e):
         # note that we set the 404 status explicitly
         return render_template('errors/403.html'), 403
 
 
 @app.errorhandler(410)
-def internal_server_error(e):
+def gone(e):
         # note that we set the 404 status explicitly
-        return render_template('errors/510.html'), 410
+        return render_template('errors/410.html'), 410
+
+@app.errorhandler(400)
+def bad_request(e):
+        # note that we set the 404 status explicitly
+        return render_template('errors/400.html'), 400
