@@ -115,7 +115,7 @@ def editarEstudiante(id):
         cur = mysql.connection.cursor()
         result = cur.execute("SELECT * FROM estudiante WHERE id = %s", [id])
 
-        entry = cur.fetchall()
+        entry = cur.fetchone()
         cur.close()
 
         nom = entry[1]
