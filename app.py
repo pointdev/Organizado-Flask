@@ -116,7 +116,7 @@ def editarEstudiante(id):
         cur.execute("SELECT * FROM estudiante WHERE id = %s", [id])
 
         entry = cur.fetchone()
-        cur.close()
+       # cur.close()
 
         nom = entry[1]
         ap1 = entry[2]
@@ -143,7 +143,7 @@ def editarEstudiante(id):
                    return redirect ('/editarEstudiante')
 
                 else:
-                        cur = mysql.connection.cursor()
+                     #   cur = mysql.connection.cursor()
                         cur.execute("UPDATE estudiante SET nombre=%s, apellido1=%s, apellido2=%s, cinta=%s, edad=%s, escuela=%s, codigoParticipacion=%s WHERE id=%s",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion, id))
                         # ("INSERT INTO estudiante(nombre, apellido1, apellido2, cinta, edad, escuela, codigoParticipacion) VALUES(%s, %s, %s, %s, %s, %s, %s)",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion))
                         mysql.connection.commit()
