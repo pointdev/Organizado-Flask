@@ -88,6 +88,7 @@ def crearEstudiante():
     if request.method == 'POST':
         #Fetch form data
         estudianteDetails = request.form
+        estudianteDetails['nombre'] = 'foo test'
         nombre = estudianteDetails['nombre']
         apellido1 = estudianteDetails['apellido1']
         apellido2 = estudianteDetails['apellido2']
