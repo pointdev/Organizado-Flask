@@ -54,6 +54,15 @@ def eliminarTodasEscuelas():
         cur.close()
         return redirect('/home')
 
+
+@app.route('/queryDeleteEscuela/<string:id>', methods=['POST'])
+def deleteEscuela(id):
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM escuela WHERE nombre = %s", [id])
+        mysql.connection.commit()
+        cur.close()
+        return redirect ('/escuela')
+
 @app.route('/queryDeleteEstudiante/<string:id>', methods=['POST'])
 def deleteEstudiante(id):
         cur = mysql.connection.cursor()
