@@ -130,13 +130,13 @@ def editarEstudiante(id):
                 escuela = estudianteDetails['escuela']
                 codigoParticipacion = estudianteDetails['codigoParticipacion']
 
-                nombre.data = entry['nombre']
-                apellido1.data = entry['apellido1']
-                apellido2.data = entry['apellido2']
-                cinta.data = entry['cinta']
-                edad.data = entry['edad']
-                escuela.data = entry['escuela']
-                codigoParticipacion.data = entry['codigoParticipacion']
+                nombre = entry['nombre']
+                apellido1 = entry['apellido1']
+                apellido2 = entry['apellido2']
+                cinta = entry['cinta']
+                edad = entry['edad']
+                escuela = entry['escuela']
+                codigoParticipacion = entry['codigoParticipacion']
 
                 if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
                    return redirect ('/editarEstudiante')
