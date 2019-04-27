@@ -117,6 +117,16 @@ def editarEstudiante(id):
         cur.close()
 
         estudianteDetails = request.form
+        nombre = estudianteDetails['nombre']
+        apellido1 = estudianteDetails['apellido1']
+        apellido2 = estudianteDetails['apellido2']
+        cinta = estudianteDetails['cinta']
+        edad = estudianteDetails['edad']
+        escuela = estudianteDetails['escuela']
+        codigoParticipacion = estudianteDetails['codigoParticipacion']
+
+
+
         nombre.data = entry['nombre']
         apellido1.data = entry['apellido1']
         apellido2.data = entry['apellido2']
@@ -139,6 +149,7 @@ def editarEstudiante(id):
 
                 if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
                    return redirect ('/crearEstudiante')
+
                 else:
                         cur = mysql.connection.cursor()
                         cur.execute("UPDATE estudiante SET nombre=%s, apellido1=%s, apellido2=%s, cinta=%s, edad=%s, escuela=%s, codigoParticipacion=%s WHERE id=%s",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion, id))
@@ -146,7 +157,7 @@ def editarEstudiante(id):
                         mysql.connection.commit()
                         cur.close()
                         return redirect('/estudiantes')
-    return render_template('editarEstudiante.html')
+        return render_template('editarEstudiante.html')
 
 
 @app.route('/estudiantes')
