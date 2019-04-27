@@ -28,7 +28,7 @@
         <td> {{estudiante[5]}} </td>
         <td> {{estudiante[6]}} </td>
         <td> <a class= "a2" href="https://organizador-torneos-flask.herokuapp.com/codigoParticipacion">{{estudiante[7]}}</a> </td>
-        <td><form action="">
+        <td><form action="{{url_for('editarEstudiante', id=estudiante[0])}}" method="POST">
             <button class="button">Editar </button>
         </form></td>
         <td><form action="{{url_for('deleteEstudiante', id=estudiante[0])}}" method="POST">
