@@ -12,7 +12,9 @@ cinta varchar(40) NOT NULL,
 edad int NOT NULL,
 escuela varchar(40),
 codigoParticipacion varchar(5) NOT NULL,
-	PRIMARY KEY (ID)
+	PRIMARY KEY (ID),
+	FOREIGN KEY (escuela) REFERENCES `escuela` (nombre),
+    FOREIGN KEY (codigoParticipacion) REFERENCES `codigoParticipacion` (codigo_participacion)
 );
 
 
@@ -26,7 +28,7 @@ rompimiento varchar(3) NOT NULL,
   PRIMARY KEY (codigo_participacion)
 );
 
-
+SELECT * FROM codigoParticipacion;
 
 insert  into codigoParticipacion(codigo_participacion, kumite, kata, armas, rompimiento) values
 (20001, 'no' , 'no', 'no' , 'yes' ),

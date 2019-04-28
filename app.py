@@ -120,6 +120,8 @@ def deleteEstudiante(id):
 @app.route('/editarEstudiante/<string:id>' , methods=['GET', 'POST'])
 def editarEstudiante(id):
         cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM estudiante WHERE id=%s", [id])
+        entry = cur.fetchone()
         
         cur2 = mysql.connection.cursor()
         cur3 = mysql.connection.cursor()
@@ -152,7 +154,7 @@ def editarEstudiante(id):
                         mysql.connection.commit()
                         cur.close()
                         return redirect('/estudiantes')
-        return render_template('editarEstudiante.html', codigoDetails=codigoDetails, escuelaDetails=escuelaDetails)
+        return render_template('editarEstudiante.html', codigoDetails=codigoDetails, escuelaDetails=escuelaDetails, entry=entry)
 
 #
 #nom=nom,ap1=ap1, ap2=ap2, cin=cin, ed=ed,esc=esc,cod=cod
