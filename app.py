@@ -126,8 +126,8 @@ def editarEstudiante(id):
         resultValue = cur2.execute("SELECT * FROM codigoParticipacion")
         resultValue2 = cur3.execute("SELECT * FROM escuela")
         if resultValue > 0  or resultValue2 > 0:
-                escuelaDetails = cur2.fetchall()
-                codigoDetails = cur3.fetchall()
+                escuelaDetails = cur3.fetchall()
+                codigoDetails = cur2.fetchall()
 
         if request.method == 'POST':
         #Fetch form data
