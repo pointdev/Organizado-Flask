@@ -123,11 +123,11 @@ def editarEstudiante(id):
         
         cur2 = mysql.connection.cursor()
         cur3 = mysql.connection.cursor()
-        resultValue = cur2.execute("SELECT * FROM codigoParticipacion")
-        resultValue2 = cur3.execute("SELECT * FROM escuela")
-        if resultValue > 0  or resultValue2 > 0:
-                escuelaDetails = cur3.fetchall()
+        resultValue2 = cur2.execute("SELECT * FROM codigoParticipacion")
+        resultValue3 = cur3.execute("SELECT * FROM escuela")
+        if resultValue2 > 0  or resultValue3 > 0:
                 codigoDetails = cur2.fetchall()
+                escuelaDetails = cur3.fetchall()
 
         if request.method == 'POST':
         #Fetch form data
