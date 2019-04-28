@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
 
 
@@ -9,6 +9,7 @@ app.config['MYSQL_PASSWORD'] = 'lxv5byb85vydqsnu'
 app.config['MYSQL_DB'] = 's80s1c8qqx6rqp2o'
 
 mysql = MySQL(app)
+
 
 @app.route('/')
 def index():
@@ -55,6 +56,14 @@ def eliminarTodasEscuelas():
         return redirect('/home')
 
 
+@app.route('/queryDeleteEscuela/<string:id>', methods=['POST'])
+def deleteEscuela(id):
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM escuela WHERE nombre = %s", [id])
+        mysql.connection.commit()
+        cur.close()
+        return redirect ('/escuelas')
+
 
 @app.route('/queryDeleteAllEstudiante')
 def eliminarTodosEstudiantes():
@@ -68,6 +77,13 @@ def eliminarTodosEstudiantes():
 #ESTUDIANTE ==================================================================
 @app.route('/crearEstudiante', methods=['GET', 'POST'])
 def crearEstudiante():
+    cur = mysql.connection.cursor()
+    cur2 = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM codigoParticipacion")
+    resultValue2 = cur2.execute("SELECT * FROM escuela")
+    if resultValue > 0  or resultValue2 > 0:
+        escuelaDetails = cur2.fetchall()
+        codigoDetails = cur.fetchall()
 
     if request.method == 'POST':
         #Fetch form data
@@ -88,7 +104,60 @@ def crearEstudiante():
             mysql.connection.commit()
             cur.close()
             return redirect('/estudiantes')
-    return render_template('crearEstudiante.html')
+    return render_template('crearEstudiante.html', codigoDetails=codigoDetails, escuelaDetails=escuelaDetails)
+
+
+
+@app.route('/queryDeleteEstudiante/<string:id>', methods=['POST'])
+def deleteEstudiante(id):
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM estudiante WHERE id = %s", [id])
+        mysql.connection.commit()
+        cur.close()
+        return redirect ('/estudiantes')
+
+
+@app.route('/editarEstudiante/<string:id>' , methods=['GET', 'POST'])
+def editarEstudiante(id):
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM estudiante WHERE id=%s", [id])
+        entry = cur.fetchone()
+        
+        cur2 = mysql.connection.cursor()
+        cur3 = mysql.connection.cursor()
+        resultValue2 = cur2.execute("SELECT * FROM codigoParticipacion")
+        resultValue3 = cur3.execute("SELECT * FROM escuela")
+        if resultValue2 > 0  or resultValue3 > 0:
+                codigoDetails = cur2.fetchall()
+                escuelaDetails = cur3.fetchall()
+
+        if request.method == 'POST':
+        #Fetch form data
+                estudianteDetails = request.form
+                nombre = estudianteDetails['nombre']
+                apellido1 = estudianteDetails['apellido1']
+                apellido2 = estudianteDetails['apellido2']
+                cinta = estudianteDetails['cinta']
+                edad = estudianteDetails['edad']
+                escuela = estudianteDetails['escuela']
+                codigoParticipacion = estudianteDetails['codigoParticipacion']
+                
+                
+
+                if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
+                   return redirect ('/editarEstudiante')
+
+                else:
+                     #   cur = mysql.connection.cursor()
+                        cur.execute("UPDATE estudiante SET nombre=%s, apellido1=%s, apellido2=%s, cinta=%s, edad=%s, escuela=%s, codigoParticipacion=%s WHERE id=%s",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion, id))
+                        # ("INSERT INTO estudiante(nombre, apellido1, apellido2, cinta, edad, escuela, codigoParticipacion) VALUES(%s, %s, %s, %s, %s, %s, %s)",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion))
+                        mysql.connection.commit()
+                        cur.close()
+                        return redirect('/estudiantes')
+        return render_template('editarEstudiante.html', codigoDetails=codigoDetails, escuelaDetails=escuelaDetails, entry=entry)
+
+#
+#nom=nom,ap1=ap1, ap2=ap2, cin=cin, ed=ed,esc=esc,cod=cod
 
 @app.route('/estudiantes')
 def estudiantes():
@@ -124,6 +193,9 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 # RENDER ERROR PAGES =========================================================
+
+app.config['TRAP_HTTP_EXCEPTIONS']=True
+
 @app.errorhandler(404)
 def page_not_found(e):
         # note that we set the 404 status explicitly
@@ -137,12 +209,17 @@ def internal_server_error(e):
 
 
 @app.errorhandler(403)
-def internal_server_error(e):
+def prohibited(e):
         # note that we set the 404 status explicitly
         return render_template('errors/403.html'), 403
 
 
 @app.errorhandler(410)
-def internal_server_error(e):
+def gone(e):
         # note that we set the 404 status explicitly
-        return render_template('errors/510.html'), 410
+        return render_template('errors/410.html'), 410
+
+@app.errorhandler(400)
+def bad_request(e):
+        # note that we set the 404 status explicitly
+        return render_template('errors/400.html'), 400

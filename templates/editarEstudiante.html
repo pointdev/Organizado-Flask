@@ -1,0 +1,49 @@
+{% extends "logolayout.html" %}
+{% block content %}
+<title>Editar participante</title>
+
+<form method="POST" action="">
+    Nombre <input type="text" name="nombre" value={{entry[1]}} />
+    <br>
+    Primer apellido <input type="text" name="apellido1" value={{entry[2]}} />
+    <br>
+    Segundo apellido <input type="text" name="apellido2" value={{entry[3]}} />
+    <br>
+    Cinta <input type="text" list = "cintas" name="cinta" value={{entry[4]}} />
+        <datalist id="cintas" type= "text">
+            <option value=blanco></option>
+            <option value=amarillo></option>
+            <option value=naranja></option>
+            <option value=púrpura/violeta></option>
+            <option value=azul></option>
+            <option value=verde></option>
+            <option value=marrón></option>
+            <option value=rojo></option>
+            <option value=negro></option>
+        </datalist>
+    <br>
+    Edad <input type="number" name="edad" value={{entry[5]}} />
+    <br>
+      Escuela <input list="escuelas" type="text" name="escuela" value={{entry[6]}} />
+      <datalist id="escuelas" type= "text">
+          {% for escuela in escuelaDetails %}
+          <option value={{escuela[0]}}></option>
+          {% endfor %}
+        </datalist>
+    <br>
+      Codigo de participacion  <input list= "codigos" type="text" name="codigoParticipacion" value={{entry[7]}} />
+      <datalist id="codigos" type= "text">
+        {% for codigo in codigoDetails %}
+        <option value={{codigo[0]}}></option>
+         {% endfor %}
+      </datalist>
+    <br>
+    <button class="button">Someter </button>
+</form>
+
+    <form action="https://organizador-torneos-flask.herokuapp.com/home">
+        <button class="button">Regresar a home </button>
+     </form>
+
+{% endblock %}
+
