@@ -121,6 +121,14 @@ def deleteEstudiante(id):
 def editarEstudiante(id):
         cur = mysql.connection.cursor()
         
+        cur2 = mysql.connection.cursor()
+        cur3 = mysql.connection.cursor()
+        resultValue = cur2.execute("SELECT * FROM codigoParticipacion")
+        resultValue2 = cur3.execute("SELECT * FROM escuela")
+        if resultValue > 0  or resultValue2 > 0:
+                escuelaDetails = cur2.fetchall()
+                codigoDetails = cur3.fetchall()
+
         if request.method == 'POST':
         #Fetch form data
                 estudianteDetails = request.form
@@ -144,7 +152,7 @@ def editarEstudiante(id):
                         mysql.connection.commit()
                         cur.close()
                         return redirect('/estudiantes')
-        return render_template('editarEstudiante.html')
+        return render_template('editarEstudiante.html', codigoDetails=codigoDetails, escuelaDetails=escuelaDetails)
 
 #
 #nom=nom,ap1=ap1, ap2=ap2, cin=cin, ed=ed,esc=esc,cod=cod
