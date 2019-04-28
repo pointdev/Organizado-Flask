@@ -13,14 +13,14 @@
     <br>
     Edad <input type="text" name="edad" value={{entry[5]}}/>
     <br>
-      Escuela <input list="escuelas" type="text" name="escuela"/>
+      Escuela <input list="escuelas" type="text" name="escuela" value={{entry[6]}}/>
       <datalist id="escuelas" type= "text">
           {% for escuela in escuelaDetails %}
           <option value={{escuela[0]}}></option>
           {% endfor %}
         </datalist>
     <br>
-      Codigo de participacion  <input list= "codigos" type="text" name="codigoParticipacion"/>
+      Codigo de participacion  <input list= "codigos" type="text" name="codigoParticipacion" value={{entry[7]}}/>
       <datalist id="codigos" type= "text">
         {% for codigo in codigoDetails %}
         <option value={{codigo[0]}}></option>
