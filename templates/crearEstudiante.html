@@ -1,3 +1,5 @@
+
+
 {% extends "logolayout.html" %}
 {% block content %}
 <title>Registrar participante</title>
@@ -13,66 +15,27 @@
     <br>
     Edad <input type="text" name="edad"/>
     <br>
-    Escuela <input type="text" name="escuela"/>
+      Escuela <input list="escuelas" type="text" name="escuela"/>
+      <datalist id="escuelas" type= "text">
+          {% for escuela in escuelaDetails %}
+          <option value={{escuela[0]}}></option>
+          {% endfor %}
+        </datalist>
     <br>
-    Codigo de participacion <input type="text" name="codigoParticipacion"/>
+      Codigo de participacion  <input list= "codigos" type="text" name="codigoParticipacion"/>
+      <datalist id="codigos" type= "text">
+        {% for codigo in codigoDetails %}
+        <option value={{codigo[0]}}></option>
+         {% endfor %}
+      </datalist>
     <br>
     <button class="button">Someter </button>
 </form>
 
 
 
-<!-- 
-<style>
-        .dropbtn {
-          background-color: #4CAF50;
-          color: white;
-          padding: 16px;
-          font-size: 16px;
-          border: none;
-          cursor: pointer;
-        }
-        
-        .dropdown {
-          position: relative;
-          display: inline-block;
-        }
-        
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          right: 0;
-          background-color: #f9f9f9;
-          min-width: 160px;
-          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-          z-index: 1;
-        }
-        
-        .dropdown-content a {
-          color: black;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-        }
-        
-        .dropdown-content a:hover {background-color: #f1f1f1;}
-        .dropdown:hover .dropdown-content {display: block;}
-        .dropdown:hover .dropbtn {background-color: #3e8e41;}
-        </style>
 
-
-<div class="dropdown">
-        <button class="dropbtn">Dropdown</button>
-        <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
-      </div>  -->
-
-
-
-
+     
 
 
     <form action="https://organizador-torneos-flask.herokuapp.com/home">

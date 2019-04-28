@@ -77,6 +77,13 @@ def eliminarTodosEstudiantes():
 #ESTUDIANTE ==================================================================
 @app.route('/crearEstudiante', methods=['GET', 'POST'])
 def crearEstudiante():
+    cur = mysql.connection.cursor()
+    cur2 = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM codigoParticipacion")
+    resultValue2 = cur2.execute("SELECT * FROM escuela")
+    if resultValue > 0  or resultValue2 > 0:
+        escuelaDetails = cur2.fetchall()
+        codigoDetails = cur.fetchall()
 
     if request.method == 'POST':
         #Fetch form data
@@ -97,7 +104,7 @@ def crearEstudiante():
             mysql.connection.commit()
             cur.close()
             return redirect('/estudiantes')
-    return render_template('crearEstudiante.html')
+    return render_template('crearEstudiante.html', codigoDetails=codigoDetails, escuelaDetails=escuelaDetails)
 
 
 
@@ -176,6 +183,9 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 # RENDER ERROR PAGES =========================================================
+
+app.config['TRAP_HTTP_EXCEPTIONS']=True
+
 @app.errorhandler(404)
 def page_not_found(e):
         # note that we set the 404 status explicitly
