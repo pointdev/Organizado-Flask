@@ -13,10 +13,19 @@
     <br>
     Edad <input type="text" name="edad" value="entry"/>
     <br>
-    Escuela <input type="text" name="escuela" value="entry"/>
+      Escuela <input list="escuelas" type="text" name="escuela"/>
+      <datalist id="escuelas" type= "text">
+          {% for escuela in escuelaDetails %}
+          <option value={{escuela[0]}}></option>
+          {% endfor %}
+        </datalist>
     <br>
-    Codigo de participacion <input type="text" name="codigoParticipacion" value="entry"/>
-    <br>
+      Codigo de participacion  <input list= "codigos" type="text" name="codigoParticipacion"/>
+      <datalist id="codigos" type= "text">
+        {% for codigo in codigoDetails %}
+        <option value={{codigo[0]}}></option>
+         {% endfor %}
+      </datalist>
     <button class="button">Someter </button>
 </form>
 
