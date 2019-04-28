@@ -47,10 +47,10 @@ def escuelas():
                 return render_template('escuelas.html',escuelaDetails=escuelaDetails)
 
 # WILL BECOME EDITAR ESCUELA
-@app.route('/editarEscuela/<string:nombre>' , methods=['GET', 'POST'])
-def editarEscuela(nombre):
+@app.route('/editarEscuela/<string:id>' , methods=['GET', 'POST'])
+def editarEscuela(id):
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM escuela WHERE nombre=%s", [nombre])
+        cur.execute("SELECT * FROM escuela WHERE nombre=%s", [id])
         entry = cur.fetchone()
         
    #     cur2 = mysql.connection.cursor()
