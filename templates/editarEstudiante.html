@@ -9,7 +9,18 @@
     <br>
     Segundo apellido <input type="text" name="apellido2" value={{entry[3]}} />
     <br>
-    Cinta <input type="text" name="cinta" value={{entry[4]}} />
+    Cinta <input type="text" lista = "cintas" name="cinta" value={{entry[4]}} />
+        <datalist id="cintas" type= "text">
+            <option value=blanco></option>
+            <option value=amarillo></option>
+            <option value=naranja></option>
+            <option value=púrpura/violeta></option>
+            <option value=azul></option>
+            <option value=verde></option>
+            <option value=marrón></option>
+            <option value=rojo></option>
+            <option value=negro></option>
+        </datalist>
     <br>
     Edad <input type="number" name="edad" value={{entry[5]}} />
     <br>
