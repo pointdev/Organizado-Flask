@@ -1,0 +1,27 @@
+{% extends "logolayout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <title>Editar escuela</title>
+
+
+    <form method="POST" action="">
+        Nombre <input type="text" name="nombre" />
+    <br>
+        Disciplina <input type="text" name="disciplina"/>
+    <br>
+        Instructor Principal <input type="text" name="instructorPrincipal"/>
+    <br>
+        Pueblo <input type="text" name="pueblo"/>
+    <br>
+        <button class="button">Crear Escuela </button>
+    </form>
+    
+
+    <form action="https://organizador-torneos-flask.herokuapp.com/home">
+        <button class="button">Regresar a home </button>
+     </form>
+
+</html>
+{% endblock %}
+

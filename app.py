@@ -46,6 +46,46 @@ def escuelas():
                 escuelaDetails = cur.fetchall()
                 return render_template('escuelas.html',escuelaDetails=escuelaDetails)
 
+# WILL BECOME EDITAR ESCUELA
+@app.route('/editarEscuela/<string:nombre>' , methods=['GET', 'POST'])
+def editarEstudiante(nombre):
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM escuela WHERE nombre=%s", [nombre])
+        entry = cur.fetchone()
+        
+   #     cur2 = mysql.connection.cursor()
+   #     cur3 = mysql.connection.cursor()
+   #     resultValue2 = cur2.execute("SELECT * FROM codigoParticipacion")
+   #     resultValue3 = cur3.execute("SELECT * FROM escuela")
+   #     if resultValue2 > 0  or resultValue3 > 0:
+   #             codigoDetails = cur2.fetchall()
+   #             escuelaDetails = cur3.fetchall()
+
+        if request.method == 'POST':
+        #Fetch form data
+                escuelaDetails = request.form
+                nombre = escuelaDetails['nombre']
+                disciplina = escuelaDetails['disciplina']
+                instructorPrincipal = escuelaDetails['instructorPrincipal']
+                pueblo = escuelaDetails['pueblo']
+                
+                
+
+                if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
+                   return redirect ('/editarEscuela')
+
+                else:
+                     #   cur = mysql.connection.cursor()
+                        cur.execute("UPDATE escuela SET nombre=%s, disciplina=%s, instructorPrincipal=%s, pueblo=%s WHERE nombre=%s",(nombre,disciplina, instructorPrincipal, pueblo, nombre))
+                        # ("INSERT INTO estudiante(nombre, apellido1, apellido2, cinta, edad, escuela, codigoParticipacion) VALUES(%s, %s, %s, %s, %s, %s, %s)",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion))
+                        mysql.connection.commit()
+                        cur.close()
+                        return redirect('/escuelas')
+        return render_template('editarEscuela.html', escuelaDetails=escuelaDetails, entry=entry)
+
+
+
+
 
 @app.route('/queryDeleteAllEscuela')
 def eliminarTodasEscuelas():
@@ -115,6 +155,14 @@ def deleteEstudiante(id):
         mysql.connection.commit()
         cur.close()
         return redirect ('/estudiantes')
+
+@app.route('/queryDeleteAllEstudiante')
+def eliminarTodosEstudiantes():
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM estudiante")
+        mysql.connection.commit()
+        cur.close()
+        return redirect('/home')
 
 
 @app.route('/editarEstudiante/<string:id>' , methods=['GET', 'POST'])
