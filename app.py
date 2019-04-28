@@ -48,7 +48,7 @@ def escuelas():
 
 # WILL BECOME EDITAR ESCUELA
 @app.route('/editarEscuela/<string:nombre>' , methods=['GET', 'POST'])
-def editarEstudiante(nombre):
+def editarEscuela(nombre):
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM escuela WHERE nombre=%s", [nombre])
         entry = cur.fetchone()
@@ -71,7 +71,7 @@ def editarEstudiante(nombre):
                 
                 
 
-                if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
+                if (nombre == '') or (disciplina == '') or (instructorPrincipal == '') or (pueblo == ''):
                    return redirect ('/editarEscuela')
 
                 else:
@@ -105,13 +105,7 @@ def deleteEscuela(id):
         return redirect ('/escuelas')
 
 
-@app.route('/queryDeleteAllEstudiante')
-def eliminarTodosEstudiantes():
-        cur = mysql.connection.cursor()
-        cur.execute("DELETE FROM estudiante")
-        mysql.connection.commit()
-        cur.close()
-        return redirect('/home')
+
 
 
 #ESTUDIANTE ==================================================================
