@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash, session, logging
 from flask_mysqldb import MySQL
+from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+from passlib.hash import sha256_crypt
 
 
 app = Flask(__name__)
@@ -52,18 +54,9 @@ def editarEscuela(id):
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM escuela WHERE nombre=%s", [id])
         entry = cur.fetchone()
-        
-   #     cur2 = mysql.connection.cursor()
-   #     cur3 = mysql.connection.cursor()
-   #     resultValue2 = cur2.execute("SELECT * FROM codigoParticipacion")
-   #     resultValue3 = cur3.execute("SELECT * FROM escuela")
-   #     if resultValue2 > 0  or resultValue3 > 0:
-   #             codigoDetails = cur2.fetchall()
-   #             escuelaDetails = cur3.fetchall()
    
         escuelaDetails = request.form
         if request.method == 'POST':
-        #Fetch form data
                 
                 nombre = escuelaDetails['nombre']
                 disciplina = escuelaDetails['disciplina']
@@ -83,9 +76,6 @@ def editarEscuela(id):
                         cur.close()
                         return redirect('/escuelas')
         return render_template('editarEscuela.html', escuelaDetails=escuelaDetails, entry=entry)
-
-
-
 
 
 @app.route('/queryDeleteAllEscuela')
@@ -191,16 +181,11 @@ def editarEstudiante(id):
                    return redirect ('/editarEstudiante')
 
                 else:
-                     #   cur = mysql.connection.cursor()
                         cur.execute("UPDATE estudiante SET nombre=%s, apellido1=%s, apellido2=%s, cinta=%s, edad=%s, escuela=%s, codigoParticipacion=%s WHERE id=%s",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion, id))
-                        # ("INSERT INTO estudiante(nombre, apellido1, apellido2, cinta, edad, escuela, codigoParticipacion) VALUES(%s, %s, %s, %s, %s, %s, %s)",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion))
                         mysql.connection.commit()
                         cur.close()
                         return redirect('/estudiantes')
         return render_template('editarEstudiante.html', codigoDetails=codigoDetails, escuelaDetails=escuelaDetails, entry=entry)
-
-#
-#nom=nom,ap1=ap1, ap2=ap2, cin=cin, ed=ed,esc=esc,cod=cod
 
 @app.route('/estudiantes')
 def estudiantes():
@@ -266,3 +251,22 @@ def gone(e):
 def bad_request(e):
         # note that we set the 404 status explicitly
         return render_template('errors/400.html'), 400
+
+#FORMS FOR LOGGING IN AN REGISTERING ============================================================================
+
+class RegisterForm(Form):
+        name = StringField ('Name', [validators.Length(min=1, max=50)])
+        username = StringField('Username',  [validators.Length(min=4, max=25)])
+        email = StringField('Email', [validators.Length(min=6, max=50)])
+        password = PasswordField('Password', 
+                [validators.DataRequired(),
+                validators.equal_to('confirm', message= "Passwords do not match")
+                ])
+        confirm = PasswordField('Confirm Password')
+
+@app.route('/registrar', methods = ['GET', 'POST'])
+def registrar():
+        form = RegisterForm(request.form)
+        if request.method == 'POST' and form.validate():
+                return render_template('registrar.html')
+        return render_template('registrar.html', form = form)

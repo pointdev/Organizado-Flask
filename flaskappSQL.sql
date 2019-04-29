@@ -31,6 +31,7 @@ rompimiento varchar(3) NOT NULL,
 SELECT * FROM codigoParticipacion;
 
 insert  into codigoParticipacion(codigo_participacion, kumite, kata, armas, rompimiento) values
+(20000, 'no' , 'no', 'no' , 'no' ),
 (20001, 'no' , 'no', 'no' , 'yes' ),
 (20010, 'no' , 'no', 'yes' , 'no' ),
 (20011, 'no' , 'no', 'yes' , 'yes' ),
@@ -48,13 +49,9 @@ insert  into codigoParticipacion(codigo_participacion, kumite, kata, armas, romp
 (21111, 'yes' , 'yes', 'yes' , 'yes' )
 ;
 
-SELECT DATABASE();
 
 
 #ESCUELA====================================================
-
-INSERT INTO escuela(nombre, disciplina, instructorPrincipal, pueblo) VALUES
-('Escuela', 'karate', 'Luis Sierra', 'Toa Baja');
 
 SELECT * FROM escuela;
 
@@ -65,5 +62,15 @@ disciplina varchar(40) NOT NULL,
 instructorPrincipal varchar(40) NOT NULL,
 pueblo varchar(40) NOT NULL,
   PRIMARY KEY (nombre)
+);
+
+#USERS
+CREATE TABLE users(
+id INT (11)AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(50),
+email VARCHAR (100),
+username VARCHAR(50),
+password VARCHAR(100),
+register_name TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
