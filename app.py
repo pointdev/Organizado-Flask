@@ -60,10 +60,11 @@ def editarEscuela(id):
    #     if resultValue2 > 0  or resultValue3 > 0:
    #             codigoDetails = cur2.fetchall()
    #             escuelaDetails = cur3.fetchall()
-
+   
+        escuelaDetails = request.form
         if request.method == 'POST':
         #Fetch form data
-                escuelaDetails = request.form
+                
                 nombre = escuelaDetails['nombre']
                 disciplina = escuelaDetails['disciplina']
                 instructorPrincipal = escuelaDetails['instructorPrincipal']
