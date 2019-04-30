@@ -3,6 +3,7 @@ from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
+#from data import Articles
 
 
 app = Flask(__name__)
@@ -253,6 +254,8 @@ def bad_request(e):
         # note that we set the 404 status explicitly
         return render_template('errors/400.html'), 400
 
+
+
 #FORMS FOR LOGGING IN AN REGISTERING ============================================================================
 
 class RegisterForm(Form):
@@ -269,5 +272,17 @@ class RegisterForm(Form):
 def registrar():
         form = RegisterForm(request.form)
         if request.method == 'POST' and form.validate():
-                return render_template('registrar.html')
+                name= form.name.data
+                email = forn.username.data
+                password = sha256_crypt.encrypt(str(form.password.data))
+
+                #Create cursor
+                cur = mysql.connection.cursor()
+                cur.execute("INSERT into users(name, email, username, password) VALUES (%s,%s,%s,%s)",(name, email, username, password))
+                
+                mysql.connection.commit()
+                cur.close()
+                flash('Ahora estas registrado.', 'success')
+                redirect(url_for('/index'))
+
         return render_template('registrar.html', form = form)
