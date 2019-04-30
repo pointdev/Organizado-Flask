@@ -12,7 +12,7 @@ app.config['MYSQL_HOST'] = 'fnx6frzmhxw45qcb.cbetxkdyhwsb.us-east-1.rds.amazonaw
 app.config['MYSQL_USER'] = 'ophmvxggd70qi4hx'
 app.config['MYSQL_PASSWORD'] = 'lxv5byb85vydqsnu'
 app.config['MYSQL_DB'] = 's80s1c8qqx6rqp2o'
-#app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
 
