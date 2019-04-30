@@ -34,6 +34,7 @@ def crearEscuela():
         pueblo = escuelaDetails['pueblo']
 
         if (pueblo == '') or (instructorPrincipal == '') or (disciplina == '') or (nombre == ''):
+            flash('Falta Informacion, favor volver a intentar.', 'success')
             return redirect ('/crearEscuelas')
         else:
             cur = mysql.connection.cursor()
@@ -69,6 +70,7 @@ def editarEscuela(id):
                 
 
                 if (nombre == '') or (disciplina == '') or (instructorPrincipal == '') or (pueblo == ''):
+                   flash('Falta Informacion, favor volver a intentar.', 'success')
                    return redirect ('/editarEscuela')
 
                 else:
@@ -125,6 +127,7 @@ def crearEstudiante():
         codigoParticipacion = estudianteDetails['codigoParticipacion']
 
         if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
+            flash('Falta Informacion, favor volver a intentar.', 'success')
             return redirect ('/crearEstudiante')
         else:
             cur = mysql.connection.cursor()
@@ -178,9 +181,8 @@ def editarEstudiante(id):
                 escuela = estudianteDetails['escuela']
                 codigoParticipacion = estudianteDetails['codigoParticipacion']
                 
-                
-
                 if (nombre == '') or (cinta == '') or (codigoParticipacion == '') or (edad == ''):
+                   flash('Falta Informacion, favor volver a intentar.', 'success')
                    return redirect ('/editarEstudiante')
 
                 else:
@@ -200,7 +202,7 @@ def estudiantes():
 
 
 
-#CODIGO PARTICIPACION===============================================
+#CODIGO PARTICIPACION===============================================================
 @app.route('/codigoParticipacion')
 def codigoParticipacion():
     cur = mysql.connection.cursor()
@@ -209,7 +211,7 @@ def codigoParticipacion():
         codigoDetails = cur.fetchall()
         return render_template('codigoParticipacion.html',codigoDetails=codigoDetails)
 
-#======================================================
+#==================================================================================
 @app.route('/about')
 def about():
         return render_template('about.html')
@@ -253,7 +255,7 @@ def bad_request(e):
 
 
 
-#FORMS FOR LOGGING IN AN REGISTERING ============================================================================
+#FORMS FOR LOGGING IN AND REGISTERING ============================================================================
 
 class RegisterForm(Form):
         name = StringField ('Name', [validators.Length(min=1, max=50)])
@@ -265,6 +267,7 @@ class RegisterForm(Form):
                 ])
         confirm = PasswordField('Confirm Password')
 
+#REGISTER
 @app.route('/registrar', methods = ['GET', 'POST'])
 def registrar():
         form = RegisterForm(request.form)
@@ -284,6 +287,9 @@ def registrar():
                 redirect('/index')
 
         return render_template('registrar.html', form = form)
+
+#LOGIN
+@app.route('/login', , methods = ['GET', 'POST'])
 
 #=============================================================================
 if __name__ == '__main__':
