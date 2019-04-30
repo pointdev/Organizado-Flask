@@ -14,36 +14,21 @@
             {{render_field(form.name, class_="form-control")}}
          </div>
          <div class= "form-group">
-               {{render_field(form.name, class_="form-control")}}
+               {{render_field(form.email, class_="form-control")}}
          </div>
          <div class= "form-group">
-                  {{render_field(form.name, class_="form-control")}}
+                  {{render_field(form.username, class_="form-control")}}
          </div>
          <div class= "form-group">
-               {{render_field(form.name, class_="form-control")}}
+               {{render_field(form.password, class_="form-control")}}
          </div>
+         <div class= "form-group">
+               {{render_field(form.confirm, class_="form-control")}}
+         </div>
+         <p><input type="submit" class="btn btn-primary" value="Submit"></p>
       </form>
       
    </body>
-
-
-
-  
-   <form action="https://organizador-torneos-flask.herokuapp.com/crearEscuela"> 
-      <button class="button">Crear Escuela </button>
-   </form>
-  
-   <form action="https://organizador-torneos-flask.herokuapp.com/crearEstudiante">
-      <button class="button">Registrar estudiante </button>
-   </form>
-
-   <form action="https://organizador-torneos-flask.herokuapp.com/escuelas">
-      <button class="button">Ver escuelas registradas </button>
-   </form>
-
-   <form action="https://organizador-torneos-flask.herokuapp.com/estudiantes">
-      <button class="button">Ver estudiantes registrados </button>
-   </form>
 
 
 </html>
