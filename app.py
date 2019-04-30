@@ -7,6 +7,7 @@ from functools import wraps
 
 
 app = Flask(__name__)
+app.secret_key='secret123'
 app.config['MYSQL_HOST'] = 'fnx6frzmhxw45qcb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'
 app.config['MYSQL_USER'] = 'ophmvxggd70qi4hx'
 app.config['MYSQL_PASSWORD'] = 'lxv5byb85vydqsnu'
@@ -286,5 +287,4 @@ def registrar():
 
 #=============================================================================
 if __name__ == '__main__':
-        app.secret_key='secret123'
         app.run(debug=True)
