@@ -218,10 +218,6 @@ def about():
 def home():
         return render_template('home.html')
 
-#=============================================================================
-if __name__ == '__main__':
-    app.run(debug=True)
-
 # RENDER ERROR PAGES =========================================================
 
 app.config['TRAP_HTTP_EXCEPTIONS']=True
@@ -287,3 +283,8 @@ def registrar():
                 redirect(url_for('/index'))
 
         return render_template('registrar.html', form = form)
+
+#=============================================================================
+if __name__ == '__main__':
+        app.secret_key = 'secret123'
+        app.run(debug=True)
