@@ -281,7 +281,7 @@ def registrar():
                 mysql.connection.commit()
                 cur.close()
                 flash('Ahora estas registrado.', 'success')
-                redirect(url_for('/index'))
+                redirect('/index')
 
         return render_template('registrar.html', form = form)
 
