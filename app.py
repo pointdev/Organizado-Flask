@@ -305,7 +305,7 @@ def login():
                         password = data[4]
 
                         if sha256_crypt.verify(password_candidate, password):
-                                session['Logged in'] = True
+                                session['Logged_in'] = True
                                 session['username'] = username
                                 flash('Entrado a su cuenta', 'sucess')
                                 return redirect('/home')
