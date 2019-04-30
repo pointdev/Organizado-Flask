@@ -304,15 +304,27 @@ def login():
                         password = data['password']
 
                         if sha256_crypt.verify(password_candidate, password):
-                                app.logger.info('PASSWORD MATCHED')
+                                session['Logged in'] = True
+                                session['username'] = username
+                                flash('Entrado a su cuenta', 'sucess')
+                                return redirect('/home')
                         else:
                                 error = 'Login inválido'
                                 return render_template('login.html', error=error)
+                        cur.close()
                 else:
                         error = 'Usuario no encontrado'
                         return render_template('login.html', error=error)
 
         return render_template('login.html')
+
+
+#LOGOUT
+@app.route('/logout')
+def logout():
+        session.clear()
+        flash('Desconectado de su cuenta', 'sucess')
+        return redirect('/login')
 
 #=============================================================================
 if __name__ == '__main__':
