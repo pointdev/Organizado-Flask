@@ -273,7 +273,7 @@ def registrar():
         form = RegisterForm(request.form)
         if request.method == 'POST' and form.validate():
                 name= form.name.data
-                email = forn.username.data
+                email = form.username.data
                 password = sha256_crypt.encrypt(str(form.password.data))
 
                 #Create cursor
