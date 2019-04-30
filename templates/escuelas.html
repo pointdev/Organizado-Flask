@@ -21,11 +21,11 @@
             <td> {{escuela[1]}} </td>
             <td> {{escuela[2]}} </td>
             <td> {{escuela[3]}} </td>
-            <td><form action="">
+            <td><form action="{{url_for('editarEscuela', id=escuela[0])}}"method="">
                 <button class="button">Editar </button>
             </form></td>
             <td><form action="{{url_for('deleteEscuela', id=escuela[0])}}" method="POST">
-                <button class="button">Eliminar </button>
+                <button class="button2">Eliminar </button>
             </form></td>
         </tr>
     {% endfor %}
