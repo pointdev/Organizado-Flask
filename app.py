@@ -307,7 +307,7 @@ def login():
                 else:
                         app.logger.info('NO USER')
 
-        return render_template('login.html', form = form)
+        return render_template('login.html')
 
 #=============================================================================
 if __name__ == '__main__':
