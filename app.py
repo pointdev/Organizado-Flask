@@ -301,7 +301,8 @@ def login():
 
                 if result > 0:
                         data = cur.fetchone()
-                        password = data['password']
+                        #'password'
+                        password = data[4]
 
                         if sha256_crypt.verify(password_candidate, password):
                                 session['Logged in'] = True
