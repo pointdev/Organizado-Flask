@@ -67,8 +67,6 @@ def editarEscuela(id):
                 disciplina = escuelaDetails['disciplina']
                 instructorPrincipal = escuelaDetails['instructorPrincipal']
                 pueblo = escuelaDetails['pueblo']
-                
-                
 
                 if (nombre == '') or (disciplina == '') or (instructorPrincipal == '') or (pueblo == ''):
                    flash('Falta Informacion, favor volver a intentar.', 'success')
@@ -77,7 +75,6 @@ def editarEscuela(id):
                 else:
                      #   cur = mysql.connection.cursor()
                         cur.execute("UPDATE escuela SET nombre=%s, disciplina=%s, instructorPrincipal=%s, pueblo=%s WHERE nombre=%s",(nombre,disciplina, instructorPrincipal, pueblo, nombre))
-                        # ("INSERT INTO estudiante(nombre, apellido1, apellido2, cinta, edad, escuela, codigoParticipacion) VALUES(%s, %s, %s, %s, %s, %s, %s)",(nombre,apellido1, apellido2, cinta, edad, escuela, codigoParticipacion))
                         mysql.connection.commit()
                         cur.close()
                         return redirect('/escuelas')
@@ -301,12 +298,13 @@ def login():
 
                 if result > 0:
                         data = cur.fetchone()
-                        password = data['password']
+                        #'password'
+                        password = data[4]
 
                         if sha256_crypt.verify(password_candidate, password):
-                                session['Logged in'] = True
+                                session['logged_in'] = True
                                 session['username'] = username
-                                flash('Entrado a su cuenta', 'sucess')
+                                flash('Entrado a su cuenta', 'success')
                                 return redirect('/home')
                         else:
                                 error = 'Login inválido'
@@ -318,12 +316,23 @@ def login():
 
         return render_template('login.html')
 
+#REVISA SI ESTA LOGUEADO
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('Unauthorized, Please login', 'danger')
+            return redirect('/login')
+    return wrap
+
 
 #LOGOUT
 @app.route('/logout')
 def logout():
         session.clear()
-        flash('Desconectado de su cuenta', 'sucess')
+        flash('Desconectado de su cuenta', 'success')
         return redirect('/login')
 
 #=============================================================================
