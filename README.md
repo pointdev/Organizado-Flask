@@ -85,7 +85,7 @@ Sprint 3
 + registrations form for estudiantes and escuela operational
 
 Sprint 4
-* [ ]  Participation table connected to Estudiante Table
+
 * [x] Improve interface
 * [x] toolbar implemented
 * [X] Heroku now works perfectly with database
@@ -93,10 +93,12 @@ Sprint 4
 * [x] Added Home and About page information
 
 Sprint 5
-* [ ] Improve interfac
-* [ ] Debugging
-* [ ] Error catching
-* [ ] creatng default Error 404
+* [x] Improve interface
+* [x] Debugging
+* [x] Error catching
+* [x] creatng default Error 404
+* [x]  Participation table connected to Estudiante Table
+* [x] escuela table connected to estudiante table
 
 ## Notes
 URL for heroku app:
