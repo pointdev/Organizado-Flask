@@ -73,4 +73,4 @@ username VARCHAR(50),
 password VARCHAR(100),
 register_name TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
-
+SELECT * FROM users;
